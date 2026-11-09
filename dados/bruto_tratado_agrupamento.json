@@ -1,0 +1,1 @@
+[{"cenario": "Dados brutos", "variaveis": "médias absolutas sem padronização", "k": 2, "silhueta": 0.809, "maior_grupo": 26, "menor_grupo": 1, "ufs_menor_grupo": "SP"}, {"cenario": "Dados tratados", "variaveis": "taxas e tendências padronizadas", "k": 2, "silhueta": 0.361, "maior_grupo": 20, "menor_grupo": 7, "ufs_menor_grupo": "AC, AM, AP, RO, RR, RS, TO"}]

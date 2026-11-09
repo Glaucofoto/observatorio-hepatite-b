@@ -1,0 +1,271 @@
+cod_uf,nome_uf,ano,qtd_casos
+11,Rondônia,2013,874
+11,Rondônia,2014,879
+11,Rondônia,2015,903
+11,Rondônia,2016,829
+11,Rondônia,2017,774
+11,Rondônia,2018,790
+11,Rondônia,2019,680
+11,Rondônia,2020,328
+11,Rondônia,2021,431
+11,Rondônia,2022,455
+12,Acre,2013,1333
+12,Acre,2014,917
+12,Acre,2015,605
+12,Acre,2016,582
+12,Acre,2017,568
+12,Acre,2018,469
+12,Acre,2019,435
+12,Acre,2020,135
+12,Acre,2021,283
+12,Acre,2022,368
+13,Amazonas,2013,1870
+13,Amazonas,2014,2109
+13,Amazonas,2015,1196
+13,Amazonas,2016,817
+13,Amazonas,2017,948
+13,Amazonas,2018,1024
+13,Amazonas,2019,1229
+13,Amazonas,2020,597
+13,Amazonas,2021,568
+13,Amazonas,2022,593
+14,Roraima,2013,223
+14,Roraima,2014,255
+14,Roraima,2015,196
+14,Roraima,2016,216
+14,Roraima,2017,165
+14,Roraima,2018,212
+14,Roraima,2019,264
+14,Roraima,2020,161
+14,Roraima,2021,180
+14,Roraima,2022,119
+15,Pará,2013,967
+15,Pará,2014,913
+15,Pará,2015,913
+15,Pará,2016,712
+15,Pará,2017,686
+15,Pará,2018,714
+15,Pará,2019,820
+15,Pará,2020,354
+15,Pará,2021,566
+15,Pará,2022,621
+16,Amapá,2013,144
+16,Amapá,2014,431
+16,Amapá,2015,277
+16,Amapá,2016,132
+16,Amapá,2017,118
+16,Amapá,2018,83
+16,Amapá,2019,48
+16,Amapá,2020,18
+16,Amapá,2021,26
+16,Amapá,2022,24
+17,Tocantins,2013,338
+17,Tocantins,2014,406
+17,Tocantins,2015,450
+17,Tocantins,2016,129
+17,Tocantins,2017,156
+17,Tocantins,2018,196
+17,Tocantins,2019,153
+17,Tocantins,2020,68
+17,Tocantins,2021,106
+17,Tocantins,2022,105
+21,Maranhão,2013,493
+21,Maranhão,2014,476
+21,Maranhão,2015,458
+21,Maranhão,2016,349
+21,Maranhão,2017,338
+21,Maranhão,2018,497
+21,Maranhão,2019,506
+21,Maranhão,2020,190
+21,Maranhão,2021,364
+21,Maranhão,2022,368
+22,Piauí,2013,154
+22,Piauí,2014,178
+22,Piauí,2015,140
+22,Piauí,2016,124
+22,Piauí,2017,109
+22,Piauí,2018,142
+22,Piauí,2019,156
+22,Piauí,2020,65
+22,Piauí,2021,64
+22,Piauí,2022,65
+23,Ceará,2013,460
+23,Ceará,2014,379
+23,Ceará,2015,462
+23,Ceará,2016,422
+23,Ceará,2017,386
+23,Ceará,2018,473
+23,Ceará,2019,381
+23,Ceará,2020,235
+23,Ceará,2021,299
+23,Ceará,2022,379
+24,Rio Grande do Norte,2013,352
+24,Rio Grande do Norte,2014,194
+24,Rio Grande do Norte,2015,121
+24,Rio Grande do Norte,2016,160
+24,Rio Grande do Norte,2017,170
+24,Rio Grande do Norte,2018,204
+24,Rio Grande do Norte,2019,183
+24,Rio Grande do Norte,2020,97
+24,Rio Grande do Norte,2021,125
+24,Rio Grande do Norte,2022,112
+25,Paraíba,2013,728
+25,Paraíba,2014,482
+25,Paraíba,2015,189
+25,Paraíba,2016,150
+25,Paraíba,2017,225
+25,Paraíba,2018,252
+25,Paraíba,2019,258
+25,Paraíba,2020,133
+25,Paraíba,2021,153
+25,Paraíba,2022,171
+26,Pernambuco,2013,778
+26,Pernambuco,2014,793
+26,Pernambuco,2015,442
+26,Pernambuco,2016,492
+26,Pernambuco,2017,502
+26,Pernambuco,2018,538
+26,Pernambuco,2019,774
+26,Pernambuco,2020,461
+26,Pernambuco,2021,473
+26,Pernambuco,2022,447
+27,Alagoas,2013,302
+27,Alagoas,2014,272
+27,Alagoas,2015,290
+27,Alagoas,2016,246
+27,Alagoas,2017,318
+27,Alagoas,2018,307
+27,Alagoas,2019,364
+27,Alagoas,2020,156
+27,Alagoas,2021,188
+27,Alagoas,2022,144
+28,Sergipe,2013,200
+28,Sergipe,2014,228
+28,Sergipe,2015,211
+28,Sergipe,2016,194
+28,Sergipe,2017,199
+28,Sergipe,2018,252
+28,Sergipe,2019,241
+28,Sergipe,2020,120
+28,Sergipe,2021,186
+28,Sergipe,2022,210
+29,Bahia,2013,1206
+29,Bahia,2014,1296
+29,Bahia,2015,1450
+29,Bahia,2016,1194
+29,Bahia,2017,1341
+29,Bahia,2018,1579
+29,Bahia,2019,1677
+29,Bahia,2020,832
+29,Bahia,2021,987
+29,Bahia,2022,988
+31,Minas Gerais,2013,1550
+31,Minas Gerais,2014,1663
+31,Minas Gerais,2015,2545
+31,Minas Gerais,2016,2490
+31,Minas Gerais,2017,2399
+31,Minas Gerais,2018,2479
+31,Minas Gerais,2019,2313
+31,Minas Gerais,2020,1187
+31,Minas Gerais,2021,1309
+31,Minas Gerais,2022,1289
+32,Espírito Santo,2013,669
+32,Espírito Santo,2014,578
+32,Espírito Santo,2015,596
+32,Espírito Santo,2016,630
+32,Espírito Santo,2017,670
+32,Espírito Santo,2018,582
+32,Espírito Santo,2019,476
+32,Espírito Santo,2020,207
+32,Espírito Santo,2021,348
+32,Espírito Santo,2022,316
+33,Rio de Janeiro,2013,2664
+33,Rio de Janeiro,2014,1864
+33,Rio de Janeiro,2015,2490
+33,Rio de Janeiro,2016,2270
+33,Rio de Janeiro,2017,2277
+33,Rio de Janeiro,2018,2578
+33,Rio de Janeiro,2019,2119
+33,Rio de Janeiro,2020,1124
+33,Rio de Janeiro,2021,1455
+33,Rio de Janeiro,2022,1474
+35,São Paulo,2013,8511
+35,São Paulo,2014,8001
+35,São Paulo,2015,13056
+35,São Paulo,2016,12825
+35,São Paulo,2017,13184
+35,São Paulo,2018,12993
+35,São Paulo,2019,11050
+35,São Paulo,2020,6265
+35,São Paulo,2021,7569
+35,São Paulo,2022,8294
+41,Paraná,2013,2642
+41,Paraná,2014,2727
+41,Paraná,2015,3599
+41,Paraná,2016,3447
+41,Paraná,2017,3203
+41,Paraná,2018,3220
+41,Paraná,2019,3064
+41,Paraná,2020,1655
+41,Paraná,2021,1670
+41,Paraná,2022,1744
+42,Santa Catarina,2013,2238
+42,Santa Catarina,2014,2545
+42,Santa Catarina,2015,2866
+42,Santa Catarina,2016,2613
+42,Santa Catarina,2017,2401
+42,Santa Catarina,2018,2459
+42,Santa Catarina,2019,2404
+42,Santa Catarina,2020,1438
+42,Santa Catarina,2021,1626
+42,Santa Catarina,2022,1725
+43,Rio Grande do Sul,2013,3482
+43,Rio Grande do Sul,2014,4077
+43,Rio Grande do Sul,2015,6735
+43,Rio Grande do Sul,2016,6525
+43,Rio Grande do Sul,2017,5934
+43,Rio Grande do Sul,2018,6354
+43,Rio Grande do Sul,2019,6011
+43,Rio Grande do Sul,2020,3271
+43,Rio Grande do Sul,2021,3449
+43,Rio Grande do Sul,2022,3466
+50,Mato Grosso do Sul,2013,309
+50,Mato Grosso do Sul,2014,366
+50,Mato Grosso do Sul,2015,240
+50,Mato Grosso do Sul,2016,254
+50,Mato Grosso do Sul,2017,310
+50,Mato Grosso do Sul,2018,334
+50,Mato Grosso do Sul,2019,282
+50,Mato Grosso do Sul,2020,122
+50,Mato Grosso do Sul,2021,149
+50,Mato Grosso do Sul,2022,163
+51,Mato Grosso,2013,892
+51,Mato Grosso,2014,1059
+51,Mato Grosso,2015,944
+51,Mato Grosso,2016,775
+51,Mato Grosso,2017,789
+51,Mato Grosso,2018,693
+51,Mato Grosso,2019,772
+51,Mato Grosso,2020,418
+51,Mato Grosso,2021,467
+51,Mato Grosso,2022,514
+52,Goiás,2013,536
+52,Goiás,2014,514
+52,Goiás,2015,703
+52,Goiás,2016,785
+52,Goiás,2017,858
+52,Goiás,2018,645
+52,Goiás,2019,678
+52,Goiás,2020,382
+52,Goiás,2021,905
+52,Goiás,2022,738
+53,Distrito Federal,2013,418
+53,Distrito Federal,2014,348
+53,Distrito Federal,2015,470
+53,Distrito Federal,2016,699
+53,Distrito Federal,2017,290
+53,Distrito Federal,2018,356
+53,Distrito Federal,2019,363
+53,Distrito Federal,2020,278
+53,Distrito Federal,2021,359
+53,Distrito Federal,2022,244

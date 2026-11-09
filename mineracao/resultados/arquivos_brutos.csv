@@ -1,0 +1,7 @@
+arquivo,sistema,coluna,linhas,ufs,anos,ausentes,acima_100,uso
+casos_hepatite.csv,Sinan,qtd_casos,270,27,2013 a 2022,0,,Usado na base tratada
+populacao.csv,IBGE,qtd_populacao,270,27,2013 a 2022,0,,Usado na base tratada
+nascidos_vivos.csv,Sinasc,qtd_nascidos,270,27,2013 a 2022,0,,Usado na base tratada
+cobertura.csv,SI-PNI,perc_cobertura,270,27,2013 a 2022,0,51.0,Descartado: substituído pela cobertura de hepatite B até 30 dias
+cobertura_hepb30.csv,SI-PNI,perc_cobertura,270,27,2013 a 2022,27,29.0,Usado na base tratada
+cobertura_hepa.csv,SI-PNI,perc_cobertura,243,27,2014 a 2022,0,8.0,Usado na base tratada

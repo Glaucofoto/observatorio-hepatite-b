@@ -1,0 +1,9 @@
+aspecto,bruto,tratado
+Registros usados na modelagem,270.0,243.0
+Células ausentes convertidas em zero,54.0,0.0
+Arquivos de cobertura (um redundante),3.0,2.0
+Coberturas iguais a zero (falsas),54.0,0.0
+Coberturas acima de 100% sem marcação,88.0,0.0
+Atributos disponíveis,7.0,9.0
+Indicadores relativos (por habitante),0.0,3.0
+Razão entre o maior e o menor valor do alvo,732.4,58.8

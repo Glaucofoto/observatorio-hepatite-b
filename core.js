@@ -80,6 +80,18 @@ dash.calc('regional', {
   }).sort((a, b) => a.ano - b.ano),
 });
 
+dash.calc('bruto_tratado_resumo', {
+  inputs: ['bruto_tratado_regressao'],
+  title: 'Resumo: dados brutos x tratados',
+  description: 'Por validação e cenário: melhor algoritmo, menor, médio e maior RMSE e R² médio dos 5 algoritmos (casos por 100 mil).',
+  fn: (reg) => d3.groups(reg, (r) => r.validacao, (r) => r.cenario).flatMap(([validacao, cens]) => cens.map(([cenario, rs]) => {
+    const melhor = rs.reduce((a, b) => (Number(b.RMSE) < Number(a.RMSE) ? b : a));
+    const r3 = (v) => Math.round(v * 1000) / 1000;
+    return { validacao, cenario, melhor_modelo: melhor.modelo, RMSE_min: r3(d3.min(rs, (r) => +r.RMSE)),
+      RMSE_medio: r3(d3.mean(rs, (r) => +r.RMSE)), RMSE_max: r3(d3.max(rs, (r) => +r.RMSE)), R2_medio: r3(d3.mean(rs, (r) => +r.R2)) };
+  })),
+});
+
 dash.calc('registros', {
   inputs: ['indicadores'],
   title: 'Registros por tabela do banco',
@@ -134,7 +146,7 @@ dash.calc('acima100', {
 
   function abrirAba(id) {
     raiz.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === id)));
-    raiz.querySelectorAll('#trabalho, #paineis').forEach((s) => { s.hidden = s.id !== id; });
+    raiz.querySelectorAll('#trabalho, #passos, #paineis').forEach((s) => { s.hidden = s.id !== id; });
   }
   function abrirSub(id) {
     abrirAba('paineis');
@@ -146,13 +158,14 @@ dash.calc('acima100', {
       const ativa = raiz.querySelector('[data-sub][aria-selected="true"]');
       abrirSub(ativa ? ativa.dataset.sub : 'p-visao');
       dash.setLink(ativa ? ativa.dataset.sub : 'p-visao');
-    } else { abrirAba('trabalho'); dash.setLink('trabalho'); }
+    } else { abrirAba(b.dataset.tab); dash.setLink(b.dataset.tab); }
   }));
   raiz.querySelectorAll('[data-sub]').forEach((b) => b.addEventListener('click', () => { abrirSub(b.dataset.sub); dash.setLink(b.dataset.sub); }));
 
   const alvo = (location.hash || '').slice(1);
   if (alvo && alvo.startsWith('p-') && raiz.querySelector('#' + CSS.escape(alvo))) abrirSub(alvo);
   else if (alvo === 'paineis') abrirSub('p-visao');
+  else if (alvo === 'passos') abrirAba('passos');
 
   // Filtros da página inteira
   const selAno = raiz.querySelector('#sel-ano');
@@ -172,7 +185,7 @@ dash.calc('acima100', {
   liga('#sel-y', 'y', ['cruz', 'corr-r', 'corr-leitura']);
   liga('#sel-per', 'per', ['cruz', 'corr', 'corr-r', 'corr-leitura']);
   liga('#sel-ind-tend', 'indTend', ['tend']);
-  liga('#sel-val', 'val', ['bm-reg', 'bm-tab']);
+  liga('#sel-val', 'val', ['bm-reg', 'bm-tab', 'bt-reg', 'bt-tab']);
   liga('#sel-base', 'base', ['delta']);
   liga('#sel-ind-calor', 'indCalor', ['calor']);
 })();

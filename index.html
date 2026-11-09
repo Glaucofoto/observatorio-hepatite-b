@@ -112,6 +112,22 @@ pre.ob-code { background: #0B1624; color: #E6EEF5; border-left: 4px solid var(--
 .ob-foot { border-top: 3px solid var(--ob-orange); padding-top: 10px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 [data-dash-source-state=refreshing] { opacity: .5; }
 .ob [hidden] { display: none !important; }
+.ob-passos { display: flex; flex-direction: column; gap: 0; }
+.ob-passo { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--ob-line); }
+.ob-passo > .ob-num { font-size: 2.2rem; font-weight: 700; color: var(--ob-orange); line-height: 1; border-right: 3px solid var(--ob-orange); padding-right: 12px; text-align: right; }
+.ob-passo h3 { font-size: 1.12rem; color: #FFFFFF; margin-bottom: 8px; }
+.ob-passo .ob-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.8rem; color: var(--ob-muted); margin: 0 0 10px; }
+.ob-passo .ob-meta b { color: var(--ob-orange); font-weight: 700; margin-right: 4px; }
+.ob-passo ol, .ob-passo ul { margin: 0 0 10px; padding-left: 20px; line-height: 1.55; max-width: 90ch; }
+.ob-t td.ob-vazio { color: var(--ob-crit); font-weight: 700; }
+.ob-t td.ob-acima { color: var(--ob-warn); font-weight: 700; }
+.ob-t tr.ob-off td { opacity: 0.55; }
+.ob-antes-depois { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.ob-rotulo { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; margin-bottom: 6px; }
+.ob-rotulo.antes { background: #2B3138; color: #F2F2F2; }
+.ob-rotulo.depois { background: var(--ob-orange); color: #000000; }
+@media (max-width: 640px) { .ob-passo { grid-template-columns: 1fr; gap: 6px; } .ob-passo > .ob-num { border-right: 0; text-align: left; border-bottom: 3px solid var(--ob-orange); width: fit-content; } }
+
 </style>
 
 <div class="ob" id="ob">
@@ -128,6 +144,7 @@ pre.ob-code { background: #0B1624; color: #E6EEF5; border-left: 4px solid var(--
     <p class="ob-lead">Em <b data-draw="p" data-param="ano">—</b>, <b data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</b> das 27 UFs combinam cobertura vacinal contra hepatite B abaixo de <b data-draw="p" data-param="limiar">—</b>% e taxa de hepatites virais acima da nacional (<b data-draw="val" data-src="criterios_resumo" data-campo="taxa_br" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n2">—</b> casos por 100 mil habitantes).</p>
     <nav class="ob-tabs ob-top" role="tablist" aria-label="Seções">
       <button class="ob-tab" role="tab" data-tab="trabalho" aria-selected="true">O trabalho</button>
+      <button class="ob-tab" role="tab" data-tab="passos" aria-selected="false">Passo a passo</button>
       <button class="ob-tab" role="tab" data-tab="paineis" aria-selected="false">Dashboards</button>
     </nav>
   </header>
@@ -144,7 +161,6 @@ pre.ob-code { background: #0B1624; color: #E6EEF5; border-left: 4px solid var(--
         <span class="ob-person">Raquel</span>
         <span class="ob-person">Mauro</span>
       </div>
-      <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Brasília, 2026. Trabalho final das Atividades Avaliativas 5 e 6: definição do negócio, higienização, modelagem de dados, benchmarking da mineração e dashboard para tomada de decisão.</p>
     </div>
 
     <div id="negocio">
@@ -167,7 +183,7 @@ pre.ob-code { background: #0B1624; color: #E6EEF5; border-left: 4px solid var(--
         <li><b>Modelagem conceitual</b><span class="ob-fase">Atividade 5 · DER e mapa mental dos dados</span></li>
         <li><b>Modelagem lógica</b><span class="ob-fase">Atividade 5 · modelo relacional (3FN), classes e caso de uso</span></li>
         <li><b>Modelagem física</b><span class="ob-fase">Atividade 5 · DDL e DML no PostgreSQL 16, carga dos CSV reais</span></li>
-        <li><b>Benchmarking da mineração</b><span class="ob-fase">Atividade 6 · 5 algoritmos de regressão e 3 de agrupamento em Python</span></li>
+        <li><b>Benchmarking da mineração</b><span class="ob-fase">Atividade 6 · dados brutos x dados tratados, com 5 algoritmos de regressão e 3 de agrupamento em Python</span></li>
         <li><b>Critérios e dashboard</b><span class="ob-fase">Atividade 6 · critérios C1 a C4, painéis interativos e relatório técnico</span></li>
       </ol>
     </div>
@@ -352,6 +368,11 @@ INSERT INTO cobertura_vacinal
           <p>Melhor configuração: <b>K-Means com 2 grupos</b>, silhueta <b data-draw="val" data-src="agrupamento" data-campo="silhueta" data-onde="algoritmo=K-Means&amp;parametro=k=2" data-fmt="n3">—</b>. Separou um grupo de taxa alta, majoritariamente do Norte, das demais UFs.</p>
         </div>
       </div>
+      <div class="ob-card ob-g" style="margin-top: var(--cds-gap-md)">
+        <h3>Dados brutos x dados tratados</h3>
+        <p class="ob-cap">Script <b>benchmark_bruto_tratado.py</b>: os mesmos 5 algoritmos, a mesma validação temporal e a mesma unidade de erro (casos por 100 mil), comparando a tabela como sai do TabNet com a base tratada.</p>
+        <p>No teste pós-pandemia, o RMSE médio dos 5 algoritmos cai de <b data-draw="val" data-src="bruto_tratado_resumo" data-campo="RMSE_medio" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados brutos" data-fmt="n2">—</b> nos dados brutos para <b data-draw="val" data-src="bruto_tratado_resumo" data-campo="RMSE_medio" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados tratados (com taxa do ano anterior)" data-fmt="n2">—</b> nos dados tratados. Nos dados brutos, a regressão linear erra <b data-draw="val" data-src="bruto_tratado_regressao" data-campo="RMSE" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados brutos&amp;modelo=Regressão Linear" data-fmt="n1">—</b> casos por 100 mil, porque o alvo em números absolutos varia mais de 700 vezes entre as UFs. No agrupamento bruto, a silhueta alta (<b data-draw="val" data-src="bruto_tratado_agrupamento" data-campo="silhueta" data-onde="cenario=Dados brutos" data-fmt="n3">—</b>) só isola São Paulo pelo tamanho da população.</p>
+      </div>
     </div>
 
     <div id="conclusoes">
@@ -371,6 +392,128 @@ INSERT INTO cobertura_vacinal
   </section>
 
   <!-- ============================================================ -->
+  <!-- ABA: PASSO A PASSO                                            -->
+  <!-- ============================================================ -->
+  <section class="ob-page" id="passos" hidden>
+    <div>
+      <h2>Passo a passo do trabalho</h2>
+      <p>Da pergunta de negócio ao painel, na ordem em que foi executado, com os arquivos, os scripts em Python e o resultado de cada etapa.</p>
+    </div>
+    <div class="ob-passos">
+      <article class="ob-passo" id="passo-1">
+        <div class="ob-num">01</div>
+        <div>
+          <h3>Definição do negócio</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>Responsável</b>Equipe</span><span><b>Produto</b>Pergunta de negócio e indicadores</span></p>
+          <p>A pergunta central é onde a vacinação contra a hepatite B precisa ser reforçada. O usuário é o gestor de vigilância epidemiológica, que precisa priorizar UFs para campanhas de vacinação e busca ativa de casos.</p>
+          <ol><li>Domínio: saúde pública e vigilância das hepatites virais, agravo de notificação compulsória (Lei nº 6.259/1975 e Portaria GM/MS nº 5.201/2024).</li><li>Indicadores escolhidos: taxa de detecção por 100 mil habitantes, cobertura vacinal (%), natalidade e tendência anual.</li><li>Recorte: 27 UFs, de 2013 a 2022.</li></ol>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-2">
+        <div class="ob-num">02</div>
+        <div>
+          <h3>Extração dos dados no TabNet (dados brutos)</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>Ferramenta</b>DATASUS/TabNet</span><span><b>Produto</b>6 arquivos CSV</span></p>
+          <p>Cada consulta foi feita com UF de residência na linha, ano na coluna e período de 2013 a 2022, exportada pela opção “Copia como .CSV”. A tabela abaixo é o diagnóstico dos seis arquivos exatamente como foram entregues, lido em Python.</p>
+          <div class="ob-tw"><table class="ob-t" data-draw="tab" data-src="arquivos_brutos" data-row-key="arquivo" data-cols="arquivo|Arquivo|t;sistema|Sistema|t;linhas|Linhas|n0;anos|Anos|t;ausentes|Vazios|n0;acima_100|Acima de 100%|n0;uso|Uso|t"></table></div>
+          <p class="ob-cap">Os vazios estão em 2013: o arquivo de hepatite B até 30 dias traz o ano em branco, e o de hepatite A começa em 2014.</p>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-3">
+        <div class="ob-num">03</div>
+        <div>
+          <h3>Higienização do formato com Python</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>Script</b>higienizar_tabnet.py</span><span><b>Produto</b>CSV em formato longo, UTF-8</span></p>
+          <ol><li>Lê o arquivo em Latin-1, a codificação padrão do TabNet.</li><li>Descarta o cabeçalho descritivo e o rodapé (Fonte, Notas).</li><li>Remove a linha e a coluna “Total”.</li><li>Separa o código IBGE do nome da UF (“17 Tocantins” passa a ser 17 e Tocantins).</li><li>Converte “-” em 0 e “...” em vazio (dado indisponível).</li><li>Troca a vírgula decimal por ponto.</li><li>Transforma anos em colunas em uma linha por UF e ano.</li><li>Grava em UTF-8, separado por vírgula.</li></ol>
+          <pre class="ob-code">python higienizar_tabnet.py casos_tabnet.csv casos_hepatite.csv qtd_casos</pre>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-4">
+        <div class="ob-num">04</div>
+        <div>
+          <h3>Diagnóstico de qualidade</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>Biblioteca</b>pandas</span><span><b>Produto</b>Lista de problemas e decisões</span></p>
+          <p>Com os seis arquivos carregados no pandas, foram encontrados quatro problemas que impediriam uma mineração correta:</p>
+          <ol><li><b>Vazios:</b> 54 células de cobertura vazias. Se forem lidas como zero, o modelo entende que nenhuma criança foi vacinada.</li><li><b>Coberturas acima de 100%:</b> em geral ocorrem quando há mais doses aplicadas do que nascidos vivos na UF, que são o denominador do indicador. Foram mantidas e sinalizadas, não apagadas.</li><li><b>Arquivo redundante:</b> cobertura.csv traz uma série de cobertura diferente, com correlação de apenas 0,41 com a de hepatite B até 30 dias. A equipe adotou a série até 30 dias, que mede a dose do recém-nascido, e descartou a outra.</li><li><b>Etiologia em branco:</b> no Sinan, o campo de classificação etiológica está vazio de 2013 a 2022. Por isso o indicador passou a se chamar “hepatites virais”.</li></ol>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-5">
+        <div class="ob-num">05</div>
+        <div>
+          <h3>Tratamento: antes e depois</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>Função</b>carregar_base() em observatorio.py</span><span><b>Produto</b>Base tratada, 270 linhas</span></p>
+          <p>Exemplo real: as mesmas linhas do Acre, de 2013 a 2016, antes e depois do tratamento. Em vermelho, os vazios; em amarelo, coberturas acima de 100%.</p>
+          <div class="ob-antes-depois">
+            <div><span class="ob-rotulo antes">Antes: dados brutos juntados</span>
+              <div class="ob-tw"><table class="ob-t" data-draw="tab" data-src="amostra_bruta" data-row-key="cod_uf,ano" data-cols="cod_uf|Código UF|t;ano|Ano|t;casos|Casos|n0;populacao|População|n0;nascidos|Nascidos|n0;cob_geral|cobertura.csv|n2;cob_hepb|Cob. hep. B 30 dias|n2;cob_hepa|Cob. hep. A|n2"></table></div>
+              <p class="ob-cap">Na leitura ingênua, os vazios de 2013 viram zero, e a UF parece não ter vacinado ninguém.</p></div>
+            <div><span class="ob-rotulo depois">Depois: dados tratados</span>
+              <div class="ob-tw"><table class="ob-t" data-draw="tab" data-src="amostra_tratada" data-row-key="uf,ano" data-cols="uf|UF|t;regiao|Região|t;ano|Ano|t;casos|Casos|n0;taxa|Taxa por 100 mil|n2;natalidade|Natalidade|n2;cob_hepb|Cob. hep. B 30 dias|n2;cob_hepa|Cob. hep. A|n2;taxa_ano_anterior|Taxa ano anterior|n2;situacao|Situação|t"></table></div>
+              <p class="ob-cap">Sigla e região derivadas do código IBGE; casos convertidos em taxa; vazios mantidos como vazios e linhas incompletas excluídas só na modelagem.</p></div>
+          </div>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-6">
+        <div class="ob-num">06</div>
+        <div>
+          <h3>Indicadores derivados</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5 e 6</span><span><b>Função</b>carregar_base() e tendencias()</span><span><b>Produto</b>5 novos atributos</span></p>
+          <ol><li><b>Taxa de detecção</b> = casos ÷ população × 100.000. Permite comparar UFs de tamanhos diferentes.</li><li><b>Natalidade</b> = nascidos vivos ÷ população × 1.000.</li><li><b>Taxa do ano anterior</b>: defasagem de um ano da taxa, por UF, usada como atributo preditivo.</li><li><b>Tendência da cobertura</b>: inclinação da reta de mínimos quadrados, em pontos percentuais por ano.</li><li><b>Tendência relativa da taxa</b>: variação média em % ao ano, comparável entre UFs.</li></ol>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-7">
+        <div class="ob-num">07</div>
+        <div>
+          <h3>Modelagem e banco de dados</h3>
+          <p class="ob-meta"><span><b>Atividade</b>5</span><span><b>SGBD</b>PostgreSQL 16</span><span><b>Produto</b>7 tabelas em 3FN, 1.296 registros</span></p>
+          <p>Os diagramas conceitual (DER e mapa mental), lógico (relacional, classes e caso de uso) e físico (DDL e DML) estão na aba “O trabalho”, itens 5 a 7. A carga usa tabelas de staging e a visão <b>vw_indicadores_uf</b> calcula os indicadores dentro do banco.</p>
+          <pre class="ob-code">psql -U postgres -d observatorio -f observatorio_hepb.sql</pre>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-8">
+        <div class="ob-num">08</div>
+        <div>
+          <h3>Mineração em Python</h3>
+          <p class="ob-meta"><span><b>Atividade</b>6</span><span><b>Bibliotecas</b>pandas e scikit-learn</span><span><b>Produto</b>Benchmarking de 5 algoritmos de regressão e 3 de agrupamento</span></p>
+          <ol><li><b>Regressão</b> (prever a taxa): Regressão Linear, KNN, Árvore de Decisão, Random Forest e Gradient Boosting, comparados com a regra “repetir o ano anterior”.</li><li><b>Validação temporal</b>: treino no passado e teste no futuro, antes da pandemia (teste 2019) e depois (teste 2021 e 2022).</li><li><b>Agrupamento</b>: K-Means, Hierárquico (Ward) e DBSCAN, avaliados por silhueta e Davies-Bouldin.</li></ol>
+          <pre class="ob-code">pip install -r requirements.txt
+python benchmark.py                 # benchmarking dos algoritmos
+python benchmark_bruto_tratado.py   # benchmarking dados brutos x dados tratados
+python exportar_dashboard.py        # gera os arquivos do painel
+streamlit run app.py                # painel em Streamlit</pre>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-9">
+        <div class="ob-num">09</div>
+        <div>
+          <h3>Benchmarking: dados brutos x dados tratados</h3>
+          <p class="ob-meta"><span><b>Atividade</b>6</span><span><b>Script</b>benchmark_bruto_tratado.py</span><span><b>Produto</b>Prova do ganho do tratamento</span></p>
+          <p>Os mesmos algoritmos foram treinados duas vezes, com a mesma validação temporal: uma vez com os seis arquivos como foram extraídos e outra com a base tratada. O erro é sempre medido em casos por 100 mil habitantes.</p>
+          <ol><li>RMSE médio dos 5 algoritmos no teste pós-pandemia: <b data-draw="val" data-src="bruto_tratado_resumo" data-campo="RMSE_medio" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados brutos" data-fmt="n2">—</b> com dados brutos e <b data-draw="val" data-src="bruto_tratado_resumo" data-campo="RMSE_medio" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados tratados (com taxa do ano anterior)" data-fmt="n2">—</b> com dados tratados.</li><li>Pior caso com dados brutos: a regressão linear erra <b data-draw="val" data-src="bruto_tratado_regressao" data-campo="RMSE" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;cenario=Dados brutos&amp;modelo=Regressão Linear" data-fmt="n1">—</b> casos por 100 mil, porque o número de casos varia mais de 700 vezes entre as UFs.</li><li>Com dados brutos, só as florestas de árvores acertam, porque memorizam o tamanho de cada UF pela população e pelo código IBGE. O resultado não explica nada sobre vacinação.</li><li>No agrupamento, os dados brutos dão silhueta alta (<b data-draw="val" data-src="bruto_tratado_agrupamento" data-campo="silhueta" data-onde="cenario=Dados brutos" data-fmt="n3">—</b>) mas só separam São Paulo; os dados tratados formam um grupo de 7 UFs de taxa alta, útil para a decisão.</li></ol>
+          <p class="ob-cap">Gráficos completos em Dashboards, aba Benchmarking.</p>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-10">
+        <div class="ob-num">10</div>
+        <div>
+          <h3>Critérios de seleção e prioridade</h3>
+          <p class="ob-meta"><span><b>Atividade</b>6</span><span><b>Função</b>aplicar_criterios()</span><span><b>Produto</b>Lista de UFs prioritárias</span></p>
+          <ol><li>C1: cobertura de hepatite B até 30 dias abaixo do limiar.</li><li>C2: taxa acima da nacional.</li><li>C3: cobertura em queda.</li><li>C4: taxa caindo menos que a nacional, em % ao ano.</li></ol>
+          <p>Prioridade alta quando C1 e C2 ocorrem juntos; média quando há C1 ou C2 com C3 ou C4. Em 2022, com limiar de 90%, são <b data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref=2022&amp;limiar=90" data-fmt="n0">—</b> UFs de prioridade alta.</p>
+        </div>
+      </article>
+      <article class="ob-passo" id="passo-11">
+        <div class="ob-num">11</div>
+        <div>
+          <h3>Dashboard e entrega</h3>
+          <p class="ob-meta"><span><b>Atividade</b>6</span><span><b>Tecnologia</b>HTML, JavaScript e D3</span><span><b>Produto</b>Painel interativo e repositório</span></p>
+          <p>O painel lê os resultados exportados pelo Python e permite escolher o ano de referência, o limiar de cobertura, os indicadores dos cruzamentos e a validação do benchmarking. O código completo (Python, SQL, dados brutos, dados tratados e painel) fica no repositório do grupo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
   <!-- ABA 2: DASHBOARDS                                             -->
   <!-- ============================================================ -->
   <section class="ob-page" id="paineis" hidden>
@@ -381,7 +524,7 @@ INSERT INTO cobertura_vacinal
         <button class="ob-tab" role="tab" data-sub="p-cruz" aria-selected="false">Cruzamentos</button>
         <button class="ob-tab" role="tab" data-sub="p-crit" aria-selected="false">Critérios e prioridade</button>
         <button class="ob-tab" role="tab" data-sub="p-tend" aria-selected="false">Tendências</button>
-        <button class="ob-tab" role="tab" data-sub="p-min" aria-selected="false">Mineração</button>
+        <button class="ob-tab" role="tab" data-sub="p-min" aria-selected="false">Benchmarking</button>
         <button class="ob-tab" role="tab" data-sub="p-qual" aria-selected="false">Qualidade dos dados</button>
       </nav>
       <div class="ob-controls">
@@ -589,6 +732,42 @@ INSERT INTO cobertura_vacinal
 
     <!-- Mineração -->
     <section class="ob-sub" id="p-min" hidden>
+      <div class="ob-card ob-g" id="c-bt">
+        <div class="ob-bar">
+          <div><h3>Benchmarking: dados brutos x dados tratados</h3><p class="ob-cap">Mesmos algoritmos e mesma validação temporal. Nos dados brutos o alvo é o número de casos, e a previsão é convertida em taxa para usar a mesma unidade de erro. Menor RMSE é melhor. A validação segue o seletor do gráfico de algoritmos, logo abaixo.</p></div>
+        </div>
+        <div class="ob-chart" data-draw="bt-reg" data-source="bruto_tratado_regressao"></div>
+        <div class="ob-legend" data-draw="leg-bt"></div>
+        <div class="ob-tw" style="margin-top: var(--cds-gap-md)">
+          <table class="ob-t" data-source="bruto_tratado_resumo" data-row-key="validacao,cenario">
+            <thead><tr><th data-field="cenario">Cenário</th><th data-field="melhor_modelo">Melhor algoritmo</th><th data-field="RMSE_min" class="n">Menor RMSE</th><th data-field="RMSE_medio" class="n">RMSE médio</th><th data-field="RMSE_max" class="n">Maior RMSE</th><th data-field="R2_medio" class="n">R² médio</th></tr></thead>
+            <tbody data-draw="bt-tab"></tbody>
+          </table>
+        </div>
+        <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Leitura: nos dados brutos, só as florestas de árvores acertam, porque usam a população e o código da UF como identificador e memorizam o nível de cada estado; os modelos lineares e de vizinhança falham. Com o tratamento, todos os algoritmos ficam estáveis e o erro passa a depender dos indicadores de saúde, não do tamanho da UF.</p>
+      </div>
+      <div class="ob-g2">
+        <div class="ob-card" id="c-bt-qual">
+          <h3>Qualidade das duas bases</h3>
+          <p class="ob-cap">Problemas da tabela bruta que o tratamento corrige.</p>
+          <div class="ob-tw">
+            <table class="ob-t" data-source="bruto_tratado_qualidade" data-row-key="aspecto">
+              <thead><tr><th data-field="aspecto">Aspecto</th><th data-field="bruto" class="n">Bruto</th><th data-field="tratado" class="n">Tratado</th></tr></thead>
+              <tbody data-draw="bt-qual"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="ob-card" id="c-bt-grp">
+          <h3>Agrupamento: brutos x tratados</h3>
+          <p class="ob-cap">K-Means com 2 grupos. Silhueta alta nos dados brutos não significa grupos úteis: o algoritmo separa apenas a UF mais populosa.</p>
+          <div class="ob-tw">
+            <table class="ob-t" data-source="bruto_tratado_agrupamento" data-row-key="cenario">
+              <thead><tr><th data-field="cenario">Cenário</th><th data-field="variaveis">Variáveis</th><th data-field="silhueta" class="n">Silhueta</th><th data-field="maior_grupo" class="n">Maior grupo</th><th data-field="ufs_menor_grupo">UFs do menor grupo</th></tr></thead>
+              <tbody data-draw="bt-grp"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       <div class="ob-card" id="c-bm-reg">
         <div class="ob-bar">
           <div><h3>Benchmarking de regressão: erro ao prever a taxa</h3><p class="ob-cap">RMSE em casos por 100 mil (menor é melhor). Os modelos aprendem com anos passados e são testados em anos seguintes.</p></div>

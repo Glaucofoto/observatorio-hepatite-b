@@ -1,0 +1,244 @@
+cod_uf,nome_uf,ano,perc_cobertura
+11,Rondônia,2014,67.33
+11,Rondônia,2015,116.26
+11,Rondônia,2016,84.04
+11,Rondônia,2017,85.23
+11,Rondônia,2018,82.06
+11,Rondônia,2019,85.01
+11,Rondônia,2020,78.62
+11,Rondônia,2021,66.89
+11,Rondônia,2022,74.51
+12,Acre,2014,11.52
+12,Acre,2015,73.22
+12,Acre,2016,60.42
+12,Acre,2017,65.77
+12,Acre,2018,76.05
+12,Acre,2019,80.62
+12,Acre,2020,59.71
+12,Acre,2021,53.11
+12,Acre,2022,62.15
+13,Amazonas,2014,44.12
+13,Amazonas,2015,97.74
+13,Amazonas,2016,68.07
+13,Amazonas,2017,75.46
+13,Amazonas,2018,78.16
+13,Amazonas,2019,85.32
+13,Amazonas,2020,68.69
+13,Amazonas,2021,63.75
+13,Amazonas,2022,71.43
+14,Roraima,2014,52.93
+14,Roraima,2015,98.21
+14,Roraima,2016,72.93
+14,Roraima,2017,88.15
+14,Roraima,2018,83.38
+14,Roraima,2019,81.05
+14,Roraima,2020,62.43
+14,Roraima,2021,49.00
+14,Roraima,2022,55.13
+15,Pará,2014,24.11
+15,Pará,2015,73.83
+15,Pará,2016,55.85
+15,Pará,2017,64.13
+15,Pará,2018,67.66
+15,Pará,2019,72.67
+15,Pará,2020,59.07
+15,Pará,2021,52.71
+15,Pará,2022,58.61
+16,Amapá,2014,38.02
+16,Amapá,2015,88.47
+16,Amapá,2016,87.09
+16,Amapá,2017,64.89
+16,Amapá,2018,68.19
+16,Amapá,2019,77.17
+16,Amapá,2020,44.59
+16,Amapá,2021,42.28
+16,Amapá,2022,47.13
+17,Tocantins,2014,54.73
+17,Tocantins,2015,94.52
+17,Tocantins,2016,75.63
+17,Tocantins,2017,81.50
+17,Tocantins,2018,84.08
+17,Tocantins,2019,87.09
+17,Tocantins,2020,83.15
+17,Tocantins,2021,74.99
+17,Tocantins,2022,81.19
+21,Maranhão,2014,43.49
+21,Maranhão,2015,91.82
+21,Maranhão,2016,56.54
+21,Maranhão,2017,68.11
+21,Maranhão,2018,70.62
+21,Maranhão,2019,74.06
+21,Maranhão,2020,58.67
+21,Maranhão,2021,53.54
+21,Maranhão,2022,63.60
+22,Piauí,2014,52.87
+22,Piauí,2015,87.08
+22,Piauí,2016,60.31
+22,Piauí,2017,76.28
+22,Piauí,2018,76.38
+22,Piauí,2019,80.21
+22,Piauí,2020,75.08
+22,Piauí,2021,66.62
+22,Piauí,2022,76.84
+23,Ceará,2014,57.84
+23,Ceará,2015,102.26
+23,Ceará,2016,94.11
+23,Ceará,2017,93.14
+23,Ceará,2018,93.68
+23,Ceará,2019,91.32
+23,Ceará,2020,85.83
+23,Ceará,2021,68.80
+23,Ceará,2022,79.53
+24,Rio Grande do Norte,2014,41.17
+24,Rio Grande do Norte,2015,87.97
+24,Rio Grande do Norte,2016,63.17
+24,Rio Grande do Norte,2017,62.02
+24,Rio Grande do Norte,2018,77.22
+24,Rio Grande do Norte,2019,81.40
+24,Rio Grande do Norte,2020,72.63
+24,Rio Grande do Norte,2021,64.72
+24,Rio Grande do Norte,2022,71.07
+25,Paraíba,2014,42.16
+25,Paraíba,2015,83.36
+25,Paraíba,2016,74.95
+25,Paraíba,2017,83.53
+25,Paraíba,2018,83.19
+25,Paraíba,2019,91.77
+25,Paraíba,2020,70.97
+25,Paraíba,2021,61.60
+25,Paraíba,2022,70.49
+26,Pernambuco,2014,54.97
+26,Pernambuco,2015,96.59
+26,Pernambuco,2016,76.36
+26,Pernambuco,2017,81.35
+26,Pernambuco,2018,82.55
+26,Pernambuco,2019,86.09
+26,Pernambuco,2020,70.50
+26,Pernambuco,2021,63.33
+26,Pernambuco,2022,69.65
+27,Alagoas,2014,52.93
+27,Alagoas,2015,98.05
+27,Alagoas,2016,72.88
+27,Alagoas,2017,87.96
+27,Alagoas,2018,89.19
+27,Alagoas,2019,88.65
+27,Alagoas,2020,72.24
+27,Alagoas,2021,68.15
+27,Alagoas,2022,79.39
+28,Sergipe,2014,60.08
+28,Sergipe,2015,95.57
+28,Sergipe,2016,68.47
+28,Sergipe,2017,75.94
+28,Sergipe,2018,81.98
+28,Sergipe,2019,82.05
+28,Sergipe,2020,67.20
+28,Sergipe,2021,66.57
+28,Sergipe,2022,74.88
+29,Bahia,2014,61.83
+29,Bahia,2015,94.42
+29,Bahia,2016,60.53
+29,Bahia,2017,72.54
+29,Bahia,2018,73.53
+29,Bahia,2019,75.30
+29,Bahia,2020,69.02
+29,Bahia,2021,57.95
+29,Bahia,2022,68.03
+31,Minas Gerais,2014,66.23
+31,Minas Gerais,2015,100.35
+31,Minas Gerais,2016,79.07
+31,Minas Gerais,2017,86.22
+31,Minas Gerais,2018,91.46
+31,Minas Gerais,2019,92.00
+31,Minas Gerais,2020,89.83
+31,Minas Gerais,2021,77.36
+31,Minas Gerais,2022,82.18
+32,Espírito Santo,2014,82.99
+32,Espírito Santo,2015,94.01
+32,Espírito Santo,2016,78.10
+32,Espírito Santo,2017,73.57
+32,Espírito Santo,2018,88.57
+32,Espírito Santo,2019,91.96
+32,Espírito Santo,2020,83.12
+32,Espírito Santo,2021,75.14
+32,Espírito Santo,2022,63.50
+33,Rio de Janeiro,2014,61.25
+33,Rio de Janeiro,2015,99.65
+33,Rio de Janeiro,2016,77.94
+33,Rio de Janeiro,2017,85.40
+33,Rio de Janeiro,2018,81.56
+33,Rio de Janeiro,2019,77.67
+33,Rio de Janeiro,2020,54.02
+33,Rio de Janeiro,2021,53.60
+33,Rio de Janeiro,2022,56.46
+35,São Paulo,2014,67.84
+35,São Paulo,2015,102.42
+35,São Paulo,2016,63.43
+35,São Paulo,2017,76.13
+35,São Paulo,2018,83.59
+35,São Paulo,2019,86.26
+35,São Paulo,2020,80.84
+35,São Paulo,2021,72.93
+35,São Paulo,2022,74.60
+41,Paraná,2014,61.57
+41,Paraná,2015,105.64
+41,Paraná,2016,75.43
+41,Paraná,2017,86.35
+41,Paraná,2018,88.55
+41,Paraná,2019,91.29
+41,Paraná,2020,86.73
+41,Paraná,2021,80.03
+41,Paraná,2022,83.47
+42,Santa Catarina,2014,78.23
+42,Santa Catarina,2015,103.16
+42,Santa Catarina,2016,84.03
+42,Santa Catarina,2017,83.33
+42,Santa Catarina,2018,87.16
+42,Santa Catarina,2019,94.35
+42,Santa Catarina,2020,88.93
+42,Santa Catarina,2021,80.32
+42,Santa Catarina,2022,87.86
+43,Rio Grande do Sul,2014,63.89
+43,Rio Grande do Sul,2015,96.25
+43,Rio Grande do Sul,2016,72.74
+43,Rio Grande do Sul,2017,78.52
+43,Rio Grande do Sul,2018,83.78
+43,Rio Grande do Sul,2019,89.42
+43,Rio Grande do Sul,2020,84.20
+43,Rio Grande do Sul,2021,70.50
+43,Rio Grande do Sul,2022,76.49
+50,Mato Grosso do Sul,2014,76.16
+50,Mato Grosso do Sul,2015,112.53
+50,Mato Grosso do Sul,2016,83.15
+50,Mato Grosso do Sul,2017,85.31
+50,Mato Grosso do Sul,2018,91.90
+50,Mato Grosso do Sul,2019,94.21
+50,Mato Grosso do Sul,2020,80.09
+50,Mato Grosso do Sul,2021,68.86
+50,Mato Grosso do Sul,2022,81.03
+51,Mato Grosso,2014,58.67
+51,Mato Grosso,2015,99.49
+51,Mato Grosso,2016,78.33
+51,Mato Grosso,2017,79.80
+51,Mato Grosso,2018,83.01
+51,Mato Grosso,2019,82.91
+51,Mato Grosso,2020,81.40
+51,Mato Grosso,2021,70.14
+51,Mato Grosso,2022,79.43
+52,Goiás,2014,69.18
+52,Goiás,2015,90.65
+52,Goiás,2016,72.30
+52,Goiás,2017,77.45
+52,Goiás,2018,81.55
+52,Goiás,2019,83.29
+52,Goiás,2020,79.36
+52,Goiás,2021,70.24
+52,Goiás,2022,74.32
+53,Distrito Federal,2014,82.97
+53,Distrito Federal,2015,74.69
+53,Distrito Federal,2016,107.07
+53,Distrito Federal,2017,81.36
+53,Distrito Federal,2018,85.21
+53,Distrito Federal,2019,87.32
+53,Distrito Federal,2020,78.84
+53,Distrito Federal,2021,73.06
+53,Distrito Federal,2022,78.06

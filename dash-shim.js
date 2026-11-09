@@ -1,7 +1,7 @@
 // Ambiente mínimo de execução do painel fora do Claude.
 // Implementa a mesma interface usada por core.js e draw.js: calc, draw, data, params, setParams e setLink.
 (function () {
-  const FONTES = ['indicadores', 'criterios', 'criterios_resumo', 'correlacoes', 'regressao', 'agrupamento', 'grupos', 'importancia'];
+  const FONTES = ['indicadores', 'criterios', 'criterios_resumo', 'correlacoes', 'regressao', 'agrupamento', 'grupos', 'importancia', 'bruto_tratado_regressao', 'bruto_tratado_qualidade', 'bruto_tratado_agrupamento', 'arquivos_brutos', 'amostra_bruta', 'amostra_tratada'];
   const brutos = {}, estado = {}, calcs = {}, desenhos = {}, cache = {};
   const q = new URLSearchParams(location.search);
   const params = { ano: Number(q.get('ano') || 2022), limiar: Number(q.get('limiar') || 90) };

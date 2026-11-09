@@ -738,4 +738,118 @@ dash.draw('leg-prior', (el) => {
   }));
 });
 
+// =====================================================================
+// Benchmarking: dados brutos x dados tratados
+// =====================================================================
+const CEN_BT = [
+  ['Dados brutos', '#8FA9C4'],
+  ['Dados tratados (sem histórico)', '#FFD199'],
+  ['Dados tratados (com taxa do ano anterior)', '#F7941D'],
+];
+dash.draw('leg-bt', (el) => {
+  el.replaceChildren(...CEN_BT.map(([nome, cor]) => {
+    const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = cor; s.append(i, nome); return s;
+  }));
+});
+
+dash.draw('bt-reg', (el) => {
+  const est = OBX.estado('bruto_tratado_regressao');
+  if (est !== 'ok') return OBX.vazio(el, est);
+  el.replaceChildren();
+  const linhas = dash.data('bruto_tratado_regressao').data.filter((r) => r.validacao === OB.val);
+  const modelos = [...new Set(linhas.map((r) => r.modelo))];
+  const W = Math.max(300, el.clientWidth || 700), bh = 12, gap = 14, m = { t: 6, r: 150, b: 28, l: 136 };
+  const H = m.t + m.b + modelos.length * (bh * 3 + gap);
+  const svg = d3.select(el).append('svg').attr('width', W).attr('height', H).attr('role', 'img')
+    .attr('aria-label', `Barras: RMSE de cada algoritmo com dados brutos e tratados, ${OB.val}`);
+  const teto = Math.ceil(d3.max(linhas.filter((r) => !(r.cenario === 'Dados brutos' && r.modelo === 'Regressão Linear')), (r) => +r.RMSE) * 1.15);
+  const x = d3.scaleLinear().domain([0, teto]).range([m.l, W - m.r]);
+  svg.append('g').attr('class', 'ob-gridl').selectAll('line').data(x.ticks(6)).join('line').attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', m.t).attr('y2', H - m.b);
+  svg.append('g').attr('class', 'ob-axis').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(FMT.n0));
+  const dica = OBX.dica(el);
+  modelos.forEach((mod, i) => {
+    const y0 = m.t + i * (bh * 3 + gap);
+    svg.append('text').attr('class', 'ob-lbl').attr('x', m.l - 8).attr('y', y0 + bh * 1.5 + 4).attr('text-anchor', 'end').style('font-weight', 700).text(mod);
+    CEN_BT.forEach(([cen, cor], j) => {
+      const r = linhas.find((l) => l.modelo === mod && l.cenario === cen);
+      if (!r) return;
+      const v = +r.RMSE, fora = v > teto, y = y0 + j * bh;
+      svg.append('rect').attr('x', m.l).attr('y', y).attr('width', Math.max(1, x(Math.min(v, teto)) - m.l)).attr('height', bh - 2).attr('fill', cor)
+        .on('mousemove', (ev) => dica.mostrar(ev, [`${mod}: ${cen}`, `RMSE ${FMT.n2(v)} · MAE ${FMT.n2(+r.MAE)} · R² ${FMT.n3(+r.R2)}`, `Treino ${r.n_treino} · teste ${r.n_teste} registros`]))
+        .on('mouseleave', () => dica.esconder());
+      svg.append('text').attr('class', 'ob-lbl-m').attr('x', x(Math.min(v, teto)) + 4).attr('y', y + bh - 3)
+        .style('font-weight', fora ? 700 : 400).text(fora ? `${FMT.n1(v)} (fora da escala)` : FMT.n2(v));
+    });
+  });
+});
+
+dash.draw('bt-tab', (el) => {
+  const est = OBX.estado('bruto_tratado_resumo');
+  el.replaceChildren();
+  if (est !== 'ok') { const tr = el.insertRow(); td(tr, est === 'erro' ? 'Não foi possível carregar.' : 'Carregando…'); return; }
+  const ordem = CEN_BT.map(([c]) => c);
+  dash.data('bruto_tratado_resumo').data.filter((r) => r.validacao === OB.val)
+    .sort((a, b) => ordem.indexOf(a.cenario) - ordem.indexOf(b.cenario)).forEach((r) => {
+      const tr = el.insertRow();
+      tr.dataset.key = `${cod(r.validacao)},${cod(r.cenario)}`;
+      if (r.cenario === ordem[2]) tr.className = 'ob-hl';
+      td(tr, r.cenario); td(tr, r.melhor_modelo); td(tr, FMT.n2(r.RMSE_min), 'n'); td(tr, FMT.n2(r.RMSE_medio), 'n'); td(tr, FMT.n2(r.RMSE_max), 'n'); td(tr, FMT.n3(r.R2_medio), 'n');
+    });
+});
+
+dash.draw('bt-qual', (el) => {
+  const est = OBX.estado('bruto_tratado_qualidade');
+  el.replaceChildren();
+  if (est !== 'ok') { const tr = el.insertRow(); td(tr, est === 'erro' ? 'Não foi possível carregar.' : 'Carregando…'); return; }
+  dash.data('bruto_tratado_qualidade').data.forEach((r) => {
+    const tr = el.insertRow();
+    tr.dataset.key = cod(r.aspecto);
+    const f = (v) => (Number.isInteger(+v) ? FMT.n0(+v) : FMT.n1(+v));
+    td(tr, r.aspecto); td(tr, f(r.bruto), 'n'); td(tr, f(r.tratado), 'n');
+  });
+});
+
+dash.draw('bt-grp', (el) => {
+  const est = OBX.estado('bruto_tratado_agrupamento');
+  el.replaceChildren();
+  if (est !== 'ok') { const tr = el.insertRow(); td(tr, est === 'erro' ? 'Não foi possível carregar.' : 'Carregando…'); return; }
+  dash.data('bruto_tratado_agrupamento').data.forEach((r) => {
+    const tr = el.insertRow();
+    tr.dataset.key = cod(r.cenario);
+    td(tr, r.cenario); td(tr, r.variaveis); td(tr, FMT.n3(+r.silhueta), 'n'); td(tr, `${r.maior_grupo} UFs`, 'n'); td(tr, r.ufs_menor_grupo);
+  });
+});
+
+// =====================================================================
+// Passo a passo: tabela genérica a partir de uma fonte
+// data-cols="campo|Rótulo|formato;..." (formato: n0, n1, n2, n3 ou t para texto)
+// =====================================================================
+dash.draw('tab', (el) => {
+  const tbody = el.tBodies[0] || el.createTBody();
+  const src = el.dataset.src;
+  const cols = el.dataset.cols.split(';').map((c) => c.split('|'));
+  if (!el.tHead) {
+    const tr = el.createTHead().insertRow();
+    cols.forEach(([campo, rot, f]) => { const th = document.createElement('th'); th.textContent = rot; th.dataset.field = campo; if (f !== 't') th.className = 'n'; tr.appendChild(th); });
+  }
+  el.setAttribute('data-source', src);
+  tbody.replaceChildren();
+  const est = OBX.estado(src);
+  if (est !== 'ok') { td(tbody.insertRow(), est === 'erro' ? 'Não foi possível carregar.' : 'Carregando…'); return; }
+  const chave = (el.dataset.rowKey || '').split(',').filter(Boolean);
+  dash.data(src).data.forEach((r) => {
+    const tr = tbody.insertRow();
+    if (chave.length) tr.dataset.key = chave.map((k) => cod(r[k])).join(',');
+    if (r.situacao && String(r.situacao).startsWith('Excluída')) tr.className = 'ob-off';
+    cols.forEach(([campo, , f]) => {
+      const v = r[campo];
+      const ehDado = /^(cob|taxa)/.test(campo);
+      const c = td(tr, v == null || v === '' ? (ehDado ? 'vazio' : '—') : (f === 't' ? String(v) : FMT[f](+v)), f === 't' ? '' : 'n');
+      if (v == null && ehDado) c.classList.add('ob-vazio');
+      if (campo.startsWith('cob') && v != null && +v > 100) c.classList.add('ob-acima');
+      if (campo.startsWith('cob') && v === 0) c.classList.add('ob-vazio');
+    });
+  });
+});
+
 }
