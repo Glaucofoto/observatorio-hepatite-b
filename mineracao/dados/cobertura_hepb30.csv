@@ -1,0 +1,271 @@
+cod_uf,nome_uf,ano,perc_cobertura
+11,Rondônia,2013,
+11,Rondônia,2014,105.84
+11,Rondônia,2015,104.78
+11,Rondônia,2016,99.55
+11,Rondônia,2017,90.09
+11,Rondônia,2018,91.54
+11,Rondônia,2019,86.75
+11,Rondônia,2020,70.84
+11,Rondônia,2021,71.36
+11,Rondônia,2022,94.59
+12,Acre,2013,
+12,Acre,2014,32.66
+12,Acre,2015,69.63
+12,Acre,2016,88.86
+12,Acre,2017,82.56
+12,Acre,2018,94.50
+12,Acre,2019,91.26
+12,Acre,2020,67.41
+12,Acre,2021,64.62
+12,Acre,2022,76.69
+13,Amazonas,2013,
+13,Amazonas,2014,98.95
+13,Amazonas,2015,101.09
+13,Amazonas,2016,85.80
+13,Amazonas,2017,85.45
+13,Amazonas,2018,90.42
+13,Amazonas,2019,89.62
+13,Amazonas,2020,86.14
+13,Amazonas,2021,91.81
+13,Amazonas,2022,103.98
+14,Roraima,2013,
+14,Roraima,2014,73.20
+14,Roraima,2015,74.28
+14,Roraima,2016,79.97
+14,Roraima,2017,113.83
+14,Roraima,2018,131.06
+14,Roraima,2019,115.53
+14,Roraima,2020,96.76
+14,Roraima,2021,78.10
+14,Roraima,2022,81.80
+15,Pará,2013,
+15,Pará,2014,94.09
+15,Pará,2015,81.63
+15,Pará,2016,55.28
+15,Pará,2017,74.97
+15,Pará,2018,78.03
+15,Pará,2019,75.47
+15,Pará,2020,63.23
+15,Pará,2021,63.97
+15,Pará,2022,74.39
+16,Amapá,2013,
+16,Amapá,2014,91.56
+16,Amapá,2015,97.87
+16,Amapá,2016,86.08
+16,Amapá,2017,83.21
+16,Amapá,2018,91.72
+16,Amapá,2019,90.97
+16,Amapá,2020,83.38
+16,Amapá,2021,91.92
+16,Amapá,2022,88.31
+17,Tocantins,2013,
+17,Tocantins,2014,84.28
+17,Tocantins,2015,94.35
+17,Tocantins,2016,77.44
+17,Tocantins,2017,91.32
+17,Tocantins,2018,100.67
+17,Tocantins,2019,111.88
+17,Tocantins,2020,89.44
+17,Tocantins,2021,91.81
+17,Tocantins,2022,110.73
+21,Maranhão,2013,
+21,Maranhão,2014,93.94
+21,Maranhão,2015,93.20
+21,Maranhão,2016,71.30
+21,Maranhão,2017,94.09
+21,Maranhão,2018,95.23
+21,Maranhão,2019,77.83
+21,Maranhão,2020,59.86
+21,Maranhão,2021,65.70
+21,Maranhão,2022,77.43
+22,Piauí,2013,
+22,Piauí,2014,89.25
+22,Piauí,2015,81.03
+22,Piauí,2016,68.93
+22,Piauí,2017,87.55
+22,Piauí,2018,91.40
+22,Piauí,2019,81.51
+22,Piauí,2020,75.62
+22,Piauí,2021,83.97
+22,Piauí,2022,98.79
+23,Ceará,2013,
+23,Ceará,2014,86.15
+23,Ceará,2015,96.59
+23,Ceará,2016,96.84
+23,Ceará,2017,99.02
+23,Ceará,2018,96.84
+23,Ceará,2019,78.89
+23,Ceará,2020,64.78
+23,Ceará,2021,70.71
+23,Ceará,2022,107.80
+24,Rio Grande do Norte,2013,
+24,Rio Grande do Norte,2014,89.47
+24,Rio Grande do Norte,2015,94.42
+24,Rio Grande do Norte,2016,72.08
+24,Rio Grande do Norte,2017,60.88
+24,Rio Grande do Norte,2018,101.38
+24,Rio Grande do Norte,2019,83.35
+24,Rio Grande do Norte,2020,80.47
+24,Rio Grande do Norte,2021,87.97
+24,Rio Grande do Norte,2022,96.81
+25,Paraíba,2013,
+25,Paraíba,2014,91.56
+25,Paraíba,2015,87.11
+25,Paraíba,2016,75.29
+25,Paraíba,2017,85.38
+25,Paraíba,2018,98.96
+25,Paraíba,2019,86.93
+25,Paraíba,2020,63.84
+25,Paraíba,2021,67.02
+25,Paraíba,2022,83.55
+26,Pernambuco,2013,
+26,Pernambuco,2014,79.29
+26,Pernambuco,2015,87.25
+26,Pernambuco,2016,84.72
+26,Pernambuco,2017,86.24
+26,Pernambuco,2018,100.25
+26,Pernambuco,2019,88.38
+26,Pernambuco,2020,78.14
+26,Pernambuco,2021,80.76
+26,Pernambuco,2022,91.26
+27,Alagoas,2013,
+27,Alagoas,2014,86.60
+27,Alagoas,2015,93.04
+27,Alagoas,2016,81.44
+27,Alagoas,2017,91.35
+27,Alagoas,2018,97.41
+27,Alagoas,2019,83.73
+27,Alagoas,2020,63.98
+27,Alagoas,2021,70.31
+27,Alagoas,2022,92.99
+28,Sergipe,2013,
+28,Sergipe,2014,125.39
+28,Sergipe,2015,110.58
+28,Sergipe,2016,94.63
+28,Sergipe,2017,94.58
+28,Sergipe,2018,108.43
+28,Sergipe,2019,84.33
+28,Sergipe,2020,77.06
+28,Sergipe,2021,86.29
+28,Sergipe,2022,98.36
+29,Bahia,2013,
+29,Bahia,2014,79.02
+29,Bahia,2015,87.18
+29,Bahia,2016,71.59
+29,Bahia,2017,76.13
+29,Bahia,2018,76.07
+29,Bahia,2019,73.74
+29,Bahia,2020,73.16
+29,Bahia,2021,64.09
+29,Bahia,2022,78.09
+31,Minas Gerais,2013,
+31,Minas Gerais,2014,88.03
+31,Minas Gerais,2015,88.92
+31,Minas Gerais,2016,76.13
+31,Minas Gerais,2017,81.89
+31,Minas Gerais,2018,91.22
+31,Minas Gerais,2019,81.77
+31,Minas Gerais,2020,75.73
+31,Minas Gerais,2021,74.12
+31,Minas Gerais,2022,90.85
+32,Espírito Santo,2013,
+32,Espírito Santo,2014,89.64
+32,Espírito Santo,2015,94.10
+32,Espírito Santo,2016,79.85
+32,Espírito Santo,2017,83.30
+32,Espírito Santo,2018,91.78
+32,Espírito Santo,2019,83.53
+32,Espírito Santo,2020,69.73
+32,Espírito Santo,2021,72.61
+32,Espírito Santo,2022,50.61
+33,Rio de Janeiro,2013,
+33,Rio de Janeiro,2014,84.23
+33,Rio de Janeiro,2015,87.66
+33,Rio de Janeiro,2016,85.83
+33,Rio de Janeiro,2017,94.66
+33,Rio de Janeiro,2018,81.92
+33,Rio de Janeiro,2019,50.77
+33,Rio de Janeiro,2020,44.95
+33,Rio de Janeiro,2021,54.13
+33,Rio de Janeiro,2022,69.48
+35,São Paulo,2013,
+35,São Paulo,2014,91.83
+35,São Paulo,2015,92.51
+35,São Paulo,2016,89.81
+35,São Paulo,2017,91.78
+35,São Paulo,2018,90.29
+35,São Paulo,2019,77.52
+35,São Paulo,2020,53.95
+35,São Paulo,2021,55.59
+35,São Paulo,2022,74.55
+41,Paraná,2013,
+41,Paraná,2014,76.40
+41,Paraná,2015,90.97
+41,Paraná,2016,75.64
+41,Paraná,2017,75.25
+41,Paraná,2018,66.45
+41,Paraná,2019,70.89
+41,Paraná,2020,61.57
+41,Paraná,2021,61.29
+41,Paraná,2022,84.47
+42,Santa Catarina,2013,
+42,Santa Catarina,2014,92.38
+42,Santa Catarina,2015,99.28
+42,Santa Catarina,2016,87.12
+42,Santa Catarina,2017,79.49
+42,Santa Catarina,2018,81.47
+42,Santa Catarina,2019,79.94
+42,Santa Catarina,2020,74.15
+42,Santa Catarina,2021,63.13
+42,Santa Catarina,2022,77.24
+43,Rio Grande do Sul,2013,
+43,Rio Grande do Sul,2014,81.04
+43,Rio Grande do Sul,2015,82.65
+43,Rio Grande do Sul,2016,72.63
+43,Rio Grande do Sul,2017,76.23
+43,Rio Grande do Sul,2018,76.03
+43,Rio Grande do Sul,2019,78.35
+43,Rio Grande do Sul,2020,73.77
+43,Rio Grande do Sul,2021,69.65
+43,Rio Grande do Sul,2022,83.71
+50,Mato Grosso do Sul,2013,
+50,Mato Grosso do Sul,2014,106.89
+50,Mato Grosso do Sul,2015,115.86
+50,Mato Grosso do Sul,2016,98.35
+50,Mato Grosso do Sul,2017,103.22
+50,Mato Grosso do Sul,2018,125.29
+50,Mato Grosso do Sul,2019,111.71
+50,Mato Grosso do Sul,2020,59.31
+50,Mato Grosso do Sul,2021,59.41
+50,Mato Grosso do Sul,2022,77.47
+51,Mato Grosso,2013,
+51,Mato Grosso,2014,104.25
+51,Mato Grosso,2015,100.77
+51,Mato Grosso,2016,89.84
+51,Mato Grosso,2017,87.77
+51,Mato Grosso,2018,97.66
+51,Mato Grosso,2019,86.96
+51,Mato Grosso,2020,75.25
+51,Mato Grosso,2021,76.02
+51,Mato Grosso,2022,86.85
+52,Goiás,2013,
+52,Goiás,2014,78.40
+52,Goiás,2015,82.63
+52,Goiás,2016,68.60
+52,Goiás,2017,71.04
+52,Goiás,2018,79.13
+52,Goiás,2019,77.48
+52,Goiás,2020,68.10
+52,Goiás,2021,67.04
+52,Goiás,2022,75.80
+53,Distrito Federal,2013,
+53,Distrito Federal,2014,126.20
+53,Distrito Federal,2015,96.65
+53,Distrito Federal,2016,134.78
+53,Distrito Federal,2017,102.41
+53,Distrito Federal,2018,111.05
+53,Distrito Federal,2019,102.65
+53,Distrito Federal,2020,86.35
+53,Distrito Federal,2021,93.05
+53,Distrito Federal,2022,113.22

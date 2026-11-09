@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observatório da Hepatite B</title>
+<meta name="description" content="Trabalho final de Mineração de Dados, Faculdade Senac DF: Observatório da Hepatite B com dados do DATASUS.">
+<link rel="icon" href="data:image/png;base64,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">
+<style>
+:root { --cds-gap-sm: 8px; --cds-gap-md: 14px; --cds-gap-lg: 22px; --font-anthropic-sans: "Segoe UI", Roboto, "Helvetica Neue"; }
+html, body { margin: 0; background: #050505; }
+#dash-root { max-width: 1280px; margin: 0 auto; }
+.ob select.dash-select { font: inherit; font-size: 0.86rem; padding: 5px 8px; min-width: 150px; }
+.ob select.dash-select option { background: #12161B; color: #F2F2F2; }
+</style>
+<script src="vendor/d3.min.js"></script>
+<script src="dash-shim.js"></script>
+</head>
+<body>
+<div id="dash-root">
+<style>
+#dash-root { --dash-gutter: 0; }
+.ob { --ob-bg: #050505; --ob-fg: #F2F2F2; --ob-muted: #A3ACB5; --ob-line: #2B3138; --ob-panel: #12161B; --ob-navy: #F7941D; --ob-orange: #F7941D;
+  --ob-blue: #F7941D; --ob-blue-l: #1A1209; --ob-green: #F7941D; --ob-green-l: #2B1A06; --ob-crit: #E5533D; --ob-warn: #F2C94C; --ob-low: #5B6670;
+  --ob-accent: var(--ob-blue);
+  background: var(--ob-bg); color: var(--ob-fg); font-family: var(--font-anthropic-sans), Arial, sans-serif;
+  display: flex; flex-direction: column; gap: 28px; padding: 0 24px 32px; color-scheme: dark; }
+.ob h1 { font-family: var(--font-anthropic-sans), Arial, sans-serif; font-weight: 700; font-size: 2rem; margin: 0; line-height: 1.15; color: #FFFFFF; letter-spacing: -0.01em; }
+.ob h2 { font-size: 1.25rem; font-weight: 700; margin: 0 0 10px; color: #FFFFFF; padding-left: 10px; border-left: 4px solid var(--ob-green); }
+.ob h3 { font-size: 1rem; font-weight: 700; margin: 0 0 6px; color: var(--ob-fg); }
+.ob p { margin: 0 0 10px; line-height: 1.55; max-width: 80ch; }
+.ob .ob-cap { font-size: 0.82rem; color: var(--ob-muted); }
+.ob-brand { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 3px solid var(--ob-orange); padding: 16px 0 12px; }
+.ob-brand-l { display: flex; align-items: center; gap: 14px; }
+.ob-brand img { height: 56px; width: 56px; display: block; }
+.ob-brand .ob-fac { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: #F28C1E; font-weight: 700; border-left: 1px solid var(--ob-line); padding-left: 14px; line-height: 1.3; }
+.ob-brand .ob-fac small { display: block; color: var(--ob-muted); letter-spacing: 0.04em; text-transform: none; font-weight: 400; font-size: 0.8rem; }
+.ob-badge { background: var(--ob-orange); color: #000000; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; }
+.ob-head { display: flex; flex-direction: column; gap: 8px; }
+.ob-kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ob-green); margin: 0; }
+.ob-lead { font-size: 1.02rem; }
+.ob-lead b { color: var(--ob-blue); }
+.ob-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--ob-line); overflow-x: auto; }
+.ob-tab { background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 16px; color: var(--ob-muted); font: inherit; font-size: 0.92rem; cursor: pointer; white-space: nowrap; border-radius: 0; }
+.ob-tab:hover { color: var(--ob-blue); }
+.ob-tab[aria-selected="true"] { color: var(--ob-blue); border-bottom-color: var(--ob-green); font-weight: 700; }
+.ob-tabs.ob-top { border-bottom: 0; gap: 2px; }
+.ob-tabs.ob-top .ob-tab { font-size: 1rem; font-weight: 700; background: var(--ob-panel); border: 1px solid var(--ob-line); border-bottom: 3px solid var(--ob-line); color: var(--ob-muted); padding: 10px 22px; }
+.ob-tabs.ob-top .ob-tab[aria-selected="true"] { background: var(--ob-navy); color: #000000; border-color: var(--ob-navy); border-bottom-color: #FFFFFF; }
+.ob-page, .ob-sub { display: flex; flex-direction: column; gap: 24px; }
+.ob-card { background: var(--ob-panel); border: 1px solid var(--ob-line); border-top: 3px solid var(--ob-blue); border-radius: 2px; padding: 18px; min-width: 0; }
+.ob-card.ob-g { border-top-color: var(--ob-green); }
+.ob-g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.ob-g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.ob-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 16px; }
+.ob-kpi { display: flex; flex-direction: column; gap: 4px; }
+.ob-kpi .ob-v { font-weight: 700; font-size: 2rem; line-height: 1.1; color: var(--ob-blue); font-variant-numeric: tabular-nums; }
+.ob-kpi .ob-l { font-size: 0.8rem; color: var(--ob-muted); }
+.ob-good { color: var(--ob-green); font-weight: 700; }
+.ob-bad { color: var(--ob-crit); font-weight: 700; }
+.ob-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.ob-controls label, label.ob-controls { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--ob-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.ob select.dash-select { border-radius: 2px; background-color: var(--ob-bg); color: var(--ob-fg); border: 1px solid var(--ob-line); text-transform: none; letter-spacing: 0; font-weight: 400; }
+.ob-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; justify-content: space-between; }
+.ob-filtros { background: var(--ob-blue-l); border-left: 4px solid var(--ob-orange); padding: 10px 14px; }
+.ob-chart { position: relative; width: 100%; min-height: 280px; }
+.ob-chart.ob-alto { min-height: 420px; }
+.ob-chart svg { display: block; overflow: visible; }
+.ob-tip { position: absolute; pointer-events: none; background: #1A1F25; border: 1px solid var(--ob-line); border-left: 3px solid var(--ob-blue); box-shadow: 0 4px 14px rgba(0,0,0,.6); padding: 6px 9px; font-size: 0.8rem; color: var(--ob-fg); z-index: 5; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ob-tip .ob-tip-t { font-weight: 700; margin-bottom: 2px; color: var(--ob-blue); }
+.ob-axis text { fill: var(--ob-muted); font-size: 11.5px; font-family: var(--font-anthropic-sans), Arial, sans-serif; }
+.ob-axis line, .ob-axis path { stroke: #4A535C; }
+.ob-gridl line { stroke: #1F252B; }
+.ob-lbl { fill: var(--ob-fg); font-size: 11.5px; font-family: var(--font-anthropic-sans), Arial, sans-serif; }
+.ob-lbl-m { fill: var(--ob-muted); font-size: 11.5px; font-family: var(--font-anthropic-sans), Arial, sans-serif; }
+.ob-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.8rem; color: var(--ob-muted); margin-top: 6px; }
+.ob-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ob-legend i { width: 12px; height: 12px; display: inline-block; }
+.ob-tw { overflow-x: auto; }
+table.ob-t { border-collapse: collapse; width: 100%; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+.ob-t th { text-align: left; font-weight: 700; color: var(--ob-orange); background: #1A1209; border-bottom: 2px solid var(--ob-orange); padding: 7px 9px; white-space: nowrap; }
+.ob-t td { padding: 6px 9px; border-bottom: 1px solid var(--ob-line); vertical-align: top; }
+.ob-t tbody tr:nth-child(even) td { background: #0D1014; }
+.ob-t .n { text-align: right; white-space: nowrap; }
+.ob-t tr.ob-hl td { background: var(--ob-green-l); font-weight: 700; }
+.ob-pill { display: inline-block; padding: 1px 8px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; border-radius: 0; color: #FFFFFF; background: var(--ob-low); }
+.ob-pill.Alta { background: var(--ob-crit); }
+.ob-pill.Média { background: var(--ob-warn); color: #000000; }
+.ob-chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 10px; }
+.ob-chip { font: inherit; font-size: 0.8rem; border: 1px solid var(--ob-line); background: var(--ob-bg); color: var(--ob-muted); border-radius: 0; padding: 3px 9px; cursor: pointer; }
+.ob-chip[aria-pressed="true"] { background: var(--ob-navy); color: #000000; border-color: var(--ob-blue); }
+.ob-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; counter-reset: passo; }
+.ob-steps li { counter-increment: passo; background: #0D1014; border-left: 4px solid var(--ob-green); padding: 12px 14px; font-size: 0.84rem; line-height: 1.5; }
+.ob-steps li::before { content: counter(passo, decimal-leading-zero); display: block; color: var(--ob-green); font-weight: 700; font-size: 1.1rem; margin-bottom: 2px; }
+.ob-steps li b { font-size: 0.98rem; color: #FFFFFF; }
+.ob-steps .ob-fase { display: block; color: var(--ob-muted); margin-top: 4px; }
+.ob-team { display: flex; flex-wrap: wrap; gap: 10px; }
+.ob-person { display: flex; align-items: center; border: 1px solid var(--ob-line); border-left: 3px solid var(--ob-orange); padding: 9px 18px; font-weight: 700; }
+.ob-person i { width: 38px; height: 38px; display: grid; place-items: center; font-style: normal; font-weight: 700; background: var(--ob-orange); color: #000000; }
+.ob-diag { width: 100%; height: auto; display: block; }
+.ob-diag text { fill: var(--ob-fg); font-size: 12px; font-family: var(--font-anthropic-sans), Arial, sans-serif; }
+.ob-diag .hd { font-weight: 700; font-size: 13px; fill: var(--ob-blue); }
+.ob-diag .q { fill: var(--ob-muted); font-size: 11.5px; }
+.ob-diag .bx { fill: #0D1014; stroke: #6B7682; stroke-width: 1.2; }
+.ob-diag .bx.main { fill: var(--ob-green-l); stroke: var(--ob-green); stroke-width: 2.2; }
+.ob-diag .sep { stroke: var(--ob-line); }
+.ob-diag .ln { stroke: #6B7682; stroke-width: 1.3; fill: none; }
+.ob-diag .zone { fill: var(--ob-blue-l); stroke: var(--ob-blue); stroke-width: 1.2; }
+.ob-diag .act { stroke: var(--ob-blue); stroke-width: 1.6; fill: none; }
+pre.ob-code { background: #0B1624; color: #E6EEF5; border-left: 4px solid var(--ob-green); padding: 12px 14px; overflow-x: auto; font-size: 12px; line-height: 1.5; margin: 0; border-radius: 0; }
+.ob details summary { cursor: pointer; color: var(--ob-blue); font-weight: 700; }
+.ob-foot { border-top: 3px solid var(--ob-orange); padding-top: 10px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+[data-dash-source-state=refreshing] { opacity: .5; }
+.ob [hidden] { display: none !important; }
+</style>
+
+<div class="ob" id="ob">
+  <div class="ob-brand" id="marca">
+    <div class="ob-brand-l">
+      <img alt="Faculdade Senac" src="data:image/png;base64,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">
+      <span class="ob-fac">Faculdade<small>Senac Distrito Federal</small></span>
+    </div>
+    <span class="ob-badge">Mineração de Dados · Trabalho final</span>
+  </div>
+  <header class="ob-head" id="topo">
+    <p class="ob-kicker">Mineração de dados aplicada à saúde pública · Atividades Avaliativas 5 e 6</p>
+    <h1>Observatório da Hepatite B</h1>
+    <p class="ob-lead">Em <b data-draw="p" data-param="ano">—</b>, <b data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</b> das 27 UFs combinam cobertura vacinal contra hepatite B abaixo de <b data-draw="p" data-param="limiar">—</b>% e taxa de hepatites virais acima da nacional (<b data-draw="val" data-src="criterios_resumo" data-campo="taxa_br" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n2">—</b> casos por 100 mil habitantes).</p>
+    <nav class="ob-tabs ob-top" role="tablist" aria-label="Seções">
+      <button class="ob-tab" role="tab" data-tab="trabalho" aria-selected="true">O trabalho</button>
+      <button class="ob-tab" role="tab" data-tab="paineis" aria-selected="false">Dashboards</button>
+    </nav>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- ABA 1: O TRABALHO                                             -->
+  <!-- ============================================================ -->
+  <section class="ob-page" id="trabalho">
+
+    <div class="ob-card ob-g" id="equipe">
+      <h2>Equipe</h2>
+      <div class="ob-team">
+        <span class="ob-person">Glauco</span>
+        <span class="ob-person">Raquel</span>
+        <span class="ob-person">Mauro</span>
+      </div>
+      <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Brasília, 2026. Trabalho final das Atividades Avaliativas 5 e 6: definição do negócio, higienização, modelagem de dados, benchmarking da mineração e dashboard para tomada de decisão.</p>
+    </div>
+
+    <div id="negocio">
+      <h2>1. O problema de negócio</h2>
+      <p><b>Pergunta central:</b> onde a vacinação contra a hepatite B precisa ser reforçada? O Observatório cruza três bases públicas que o Ministério da Saúde mantém separadas (casos notificados no Sinan, vacinação no SI-PNI e população do IBGE) para apontar as UFs com baixa cobertura vacinal e alta detecção de casos.</p>
+      <div class="ob-g4">
+        <div class="ob-card"><h3>Domínio</h3><p class="ob-cap">Saúde pública e vigilância das hepatites virais. A hepatite B é agravo de notificação compulsória (Lei nº 6.259/1975 e Portaria GM/MS nº 5.201/2024).</p></div>
+        <div class="ob-card"><h3>Usuários</h3><p class="ob-cap">Gestor de vigilância epidemiológica, analista de dados em saúde e cidadão.</p></div>
+        <div class="ob-card"><h3>Indicadores</h3><p class="ob-cap">Taxa de detecção por 100 mil habitantes, cobertura vacinal (%), natalidade e tendências anuais.</p></div>
+        <div class="ob-card"><h3>Decisão apoiada</h3><p class="ob-cap">Priorizar UFs para campanhas de vacinação e busca ativa de casos.</p></div>
+      </div>
+    </div>
+
+    <div id="feito">
+      <h2>2. O que foi feito</h2>
+      <ol class="ob-steps">
+        <li><b>Definição do negócio</b><span class="ob-fase">Atividade 5 · pergunta, usuários, indicadores e decisão</span></li>
+        <li><b>Coleta dos dados</b><span class="ob-fase">Atividade 5 · 5 arquivos CSV do TabNet (DATASUS), 27 UFs, 2013 a 2022</span></li>
+        <li><b>Higienização</b><span class="ob-fase">Atividade 5 · 8 etapas: formato, conferência, ausentes, valores fora da faixa</span></li>
+        <li><b>Modelagem conceitual</b><span class="ob-fase">Atividade 5 · DER e mapa mental dos dados</span></li>
+        <li><b>Modelagem lógica</b><span class="ob-fase">Atividade 5 · modelo relacional (3FN), classes e caso de uso</span></li>
+        <li><b>Modelagem física</b><span class="ob-fase">Atividade 5 · DDL e DML no PostgreSQL 16, carga dos CSV reais</span></li>
+        <li><b>Benchmarking da mineração</b><span class="ob-fase">Atividade 6 · 5 algoritmos de regressão e 3 de agrupamento em Python</span></li>
+        <li><b>Critérios e dashboard</b><span class="ob-fase">Atividade 6 · critérios C1 a C4, painéis interativos e relatório técnico</span></li>
+      </ol>
+    </div>
+
+    <div id="dados">
+      <h2>3. Os dados</h2>
+      <p>Cinco arquivos extraídos do TabNet pela opção “Copia como .CSV”, unidos pela chave <b>código IBGE da UF + ano</b>.</p>
+      <div class="ob-tw">
+        <table class="ob-t" id="tab-arquivos">
+          <thead><tr><th>Arquivo</th><th>Conteúdo</th><th>Sistema</th></tr></thead>
+          <tbody>
+            <tr><td>casos_hepatite.csv</td><td>Casos confirmados de hepatites virais (todas as etiologias), por UF de residência e ano de diagnóstico</td><td>Sinan</td></tr>
+            <tr><td>cobertura_hepb30.csv</td><td>Cobertura vacinal contra hepatite B em crianças até 30 dias (%)</td><td>SI-PNI</td></tr>
+            <tr><td>cobertura_hepa.csv</td><td>Cobertura vacinal contra hepatite A (%), 2014 a 2022</td><td>SI-PNI</td></tr>
+            <tr><td>populacao.csv</td><td>População residente</td><td>IBGE</td></tr>
+            <tr><td>nascidos_vivos.csv</td><td>Nascidos vivos</td><td>Sinasc</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Limite da fonte: no TabNet, o campo de classificação etiológica está em branco de 2013 a 2022. Por isso a taxa de casos soma todas as hepatites virais, e não só a hepatite B.</p>
+    </div>
+
+    <div id="tratamento">
+      <h2>4. Tratamento dos dados</h2>
+      <div class="ob-tw">
+        <table class="ob-t">
+          <thead><tr><th>Etapa</th><th>O que foi feito</th><th>Decisão</th></tr></thead>
+          <tbody>
+            <tr><td>1. Coleta</td><td>Consultas no TabNet por UF de residência e ano</td><td>Recorte comum: 27 UFs, 2013 a 2022</td></tr>
+            <tr><td>2. Padronização</td><td>Latin-1 para UTF-8; remoção de título, rodapé e linha “Total”; código IBGE separado do nome; vírgula decimal em ponto</td><td>Um formato único para a carga</td></tr>
+            <tr><td>3. Formato longo</td><td>Anos em colunas viraram linhas: uma linha por UF e ano</td><td>Atende à primeira forma normal</td></tr>
+            <tr><td>4. Conferência</td><td>Soma anual dos casos comparada com o total do TabNet</td><td>Totais idênticos em todos os anos</td></tr>
+            <tr><td>5. Etiologia</td><td>Tabulação por classificação etiológica</td><td>Indicador renomeado para “hepatites virais”</td></tr>
+            <tr><td>6. Ausentes</td><td>Contagem de células vazias</td><td>Excluídas na carga, nunca convertidas em zero</td></tr>
+            <tr><td>7. Fora da faixa</td><td>Busca de coberturas acima de 100%</td><td>Mantidas e sinalizadas (aba Qualidade dos dados)</td></tr>
+            <tr><td>8. Carga e indicadores</td><td>Carga por tabelas de staging; taxa = casos ÷ população × 100.000</td><td>Base pronta para a mineração</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="conceitual">
+      <h2>5. Modelagem conceitual</h2>
+      <div class="ob-g2">
+        <div class="ob-card" id="der">
+          <h3>Diagrama Entidade-Relacionamento</h3>
+          <svg class="ob-diag" viewBox="0 0 760 600" role="img" aria-label="DER: casos, cobertura, população e nascidos vivos ligados à UF; UF ligada à região; cobertura ligada ao imunobiológico">
+            <path class="ln" d="M380 176V264"/><path class="ln" d="M116 176V220H320V264"/><path class="ln" d="M288 320H208"/><path class="ln" d="M472 320H552"/><path class="ln" d="M440 264V220H644V176"/><path class="ln" d="M644 376V464"/>
+            <rect class="bx" x="24" y="64" width="184" height="112" rx="8"/><line class="sep" x1="24" y1="96" x2="208" y2="96"/><text class="hd" x="116" y="86" text-anchor="middle">NASCIDOS_VIVOS</text><text x="36" y="116">ano (id parcial)</text><text x="36" y="132">qtd_nascidos</text>
+            <rect class="bx" x="288" y="64" width="184" height="112" rx="8"/><line class="sep" x1="288" y1="96" x2="472" y2="96"/><text class="hd" x="380" y="86" text-anchor="middle">REGIAO</text><text x="300" y="116">id_regiao (id)</text><text x="300" y="132">nome</text>
+            <rect class="bx" x="552" y="64" width="184" height="112" rx="8"/><line class="sep" x1="552" y1="96" x2="736" y2="96"/><text class="hd" x="644" y="86" text-anchor="middle">POPULACAO</text><text x="564" y="116">ano (id parcial)</text><text x="564" y="132">qtd_populacao</text>
+            <rect class="bx" x="24" y="264" width="184" height="112" rx="8"/><line class="sep" x1="24" y1="296" x2="208" y2="296"/><text class="hd" x="116" y="286" text-anchor="middle">CASO_HEPATITE</text><text x="36" y="316">ano (id parcial)</text><text x="36" y="332">qtd_casos</text>
+            <rect class="bx main" x="288" y="264" width="184" height="112" rx="8"/><line class="sep" x1="288" y1="296" x2="472" y2="296"/><text class="hd" x="380" y="286" text-anchor="middle">UF</text><text x="300" y="316">cod_uf (id)</text><text x="300" y="332">sigla</text><text x="300" y="348">nome</text>
+            <rect class="bx" x="552" y="264" width="184" height="112" rx="8"/><line class="sep" x1="552" y1="296" x2="736" y2="296"/><text class="hd" x="644" y="286" text-anchor="middle">COBERTURA_VACINAL</text><text x="564" y="316">ano (id parcial)</text><text x="564" y="332">perc_cobertura</text>
+            <rect class="bx" x="552" y="464" width="184" height="112" rx="8"/><line class="sep" x1="552" y1="496" x2="736" y2="496"/><text class="hd" x="644" y="486" text-anchor="middle">IMUNOBIOLOGICO</text><text x="564" y="516">id_imuno (id)</text><text x="564" y="532">nome</text>
+            <text class="q" x="388" y="224" font-style="italic">possui</text><text class="q" x="388" y="194">1</text><text class="q" x="388" y="256">N</text>
+            <text class="q" x="200" y="212" text-anchor="middle" font-style="italic">tem</text><text class="q" x="124" y="194">N</text><text class="q" x="310" y="256" text-anchor="end">1</text>
+            <text class="q" x="248" y="312" text-anchor="middle" font-style="italic">registra</text><text class="q" x="216" y="336">N</text><text class="q" x="280" y="336" text-anchor="end">1</text>
+            <text class="q" x="512" y="312" text-anchor="middle" font-style="italic">tem</text><text class="q" x="480" y="336">1</text><text class="q" x="544" y="336" text-anchor="end">N</text>
+            <text class="q" x="544" y="212" text-anchor="middle" font-style="italic">tem</text><text class="q" x="448" y="256">1</text><text class="q" x="652" y="194">N</text>
+            <text class="q" x="636" y="424" text-anchor="end" font-style="italic">refere-se a</text><text class="q" x="652" y="394">N</text><text class="q" x="652" y="456">1</text>
+            <text class="q" x="24" y="592">(id) identificador · (id parcial) identifica junto com a UF · 1 e N = cardinalidade</text>
+          </svg>
+        </div>
+        <div class="ob-card" id="mapa-mental">
+          <h3>Mapa mental dos dados</h3>
+          <svg class="ob-diag" viewBox="0 0 760 420" role="img" aria-label="Mapa mental: Hepatite B no centro, com ramos Casos, Vacinação, População, Território, Tempo e Indicadores">
+            <path class="ln" d="M300 210C272 210 272 64 244 64"/><path class="ln" d="M300 210C272 210 272 210 244 210"/><path class="ln" d="M300 210C272 210 272 356 244 356"/>
+            <path class="ln" d="M460 210C488 210 488 64 516 64"/><path class="ln" d="M460 210C488 210 488 210 516 210"/><path class="ln" d="M460 210C488 210 488 356 516 356"/>
+            <rect class="bx main" x="300" y="182" width="160" height="56" rx="28"/><text class="hd" x="380" y="215" text-anchor="middle">Hepatite B</text>
+            <rect class="bx" x="24" y="20" width="220" height="88" rx="8"/><text class="hd" x="36" y="44">Casos</text><text class="q" x="36" y="64">Fonte: Sinan</text><text x="36" y="80">Todas as hepatites virais</text><text x="36" y="96">UF de residência e ano</text>
+            <rect class="bx" x="24" y="166" width="220" height="88" rx="8"/><text class="hd" x="36" y="190">Vacinação</text><text class="q" x="36" y="210">Fonte: SI-PNI</text><text x="36" y="226">Hepatite B até 30 dias (%)</text><text x="36" y="242">Hepatite A (%)</text>
+            <rect class="bx" x="24" y="312" width="220" height="88" rx="8"/><text class="hd" x="36" y="336">População</text><text class="q" x="36" y="356">Fonte: IBGE e Sinasc</text><text x="36" y="372">Residentes por UF e ano</text><text x="36" y="388">Nascidos vivos</text>
+            <rect class="bx" x="516" y="20" width="220" height="88" rx="8"/><text class="hd" x="528" y="44">Território</text><text x="528" y="64">5 regiões e 27 UFs</text><text x="528" y="80">Código IBGE como chave</text><text x="528" y="96">Une todas as fontes</text>
+            <rect class="bx" x="516" y="166" width="220" height="88" rx="8"/><text class="hd" x="528" y="190">Tempo</text><text x="528" y="210">Recorte de 2013 a 2022</text><text x="528" y="226">Granularidade anual</text><text x="528" y="242">Queda na pandemia (2020)</text>
+            <rect class="bx main" x="516" y="312" width="220" height="88" rx="8"/><text class="hd" x="528" y="336">Indicadores</text><text x="528" y="356">Taxa por 100 mil habitantes</text><text x="528" y="372">Tendências anuais</text><text x="528" y="388">Ranking de UFs prioritárias</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div id="logica">
+      <h2>6. Modelagem lógica</h2>
+      <div class="ob-card" id="relacional">
+        <h3>Modelo relacional (3FN)</h3>
+        <div class="ob-tw">
+          <table class="ob-t">
+            <thead><tr><th>Tabela</th><th>Atributos</th><th>Chave primária</th><th>Chaves estrangeiras</th></tr></thead>
+            <tbody>
+              <tr><td>regiao</td><td>id_regiao, nome</td><td>id_regiao</td><td></td></tr>
+              <tr><td>uf</td><td>cod_uf, sigla, nome, id_regiao</td><td>cod_uf</td><td>id_regiao → regiao</td></tr>
+              <tr><td>imunobiologico</td><td>id_imuno, nome</td><td>id_imuno</td><td></td></tr>
+              <tr><td>caso_hepatite</td><td>cod_uf, ano, qtd_casos</td><td>(cod_uf, ano)</td><td>cod_uf → uf</td></tr>
+              <tr><td>cobertura_vacinal</td><td>cod_uf, ano, id_imuno, perc_cobertura</td><td>(cod_uf, ano, id_imuno)</td><td>cod_uf → uf; id_imuno → imunobiologico</td></tr>
+              <tr><td>populacao</td><td>cod_uf, ano, qtd_populacao</td><td>(cod_uf, ano)</td><td>cod_uf → uf</td></tr>
+              <tr><td>nascidos_vivos</td><td>cod_uf, ano, qtd_nascidos</td><td>(cod_uf, ano)</td><td>cod_uf → uf</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">1FN: anos em linhas · 2FN: atributos dependem da chave inteira · 3FN: região e imunobiológico em tabelas próprias.</p>
+      </div>
+      <div class="ob-g2" style="margin-top: var(--cds-gap-lg)">
+        <div class="ob-card" id="classes">
+          <h3>Diagrama de classes</h3>
+          <svg class="ob-diag" viewBox="0 0 760 700" role="img" aria-label="Diagrama de classes: UF concentra os métodos taxaDeteccao, cobertura e prioritaria">
+            <path class="ln" d="M380 216V288"/><path class="ln" d="M128 216V252H316V288"/><path class="ln" d="M276 364H232"/><path class="ln" d="M484 364H528"/><path class="ln" d="M440 288V252H632V216"/><path class="ln" d="M632 440V512"/>
+            <rect class="bx" x="276" y="64" width="208" height="152" rx="8"/><line class="sep" x1="276" y1="96" x2="484" y2="96"/><line class="sep" x1="276" y1="156" x2="484" y2="156"/><text class="hd" x="380" y="86" text-anchor="middle">Regiao</text><text x="288" y="114">- id: int</text><text x="288" y="130">- nome: str</text><text x="288" y="174">+ listarUFs(): list</text>
+            <rect class="bx" x="24" y="64" width="208" height="152" rx="8"/><line class="sep" x1="24" y1="96" x2="232" y2="96"/><line class="sep" x1="24" y1="156" x2="232" y2="156"/><text class="hd" x="128" y="86" text-anchor="middle">NascidosVivos</text><text x="36" y="114">- ano: int</text><text x="36" y="130">- quantidade: int</text><text x="36" y="174">+ validar(): bool</text>
+            <rect class="bx" x="528" y="64" width="208" height="152" rx="8"/><line class="sep" x1="528" y1="96" x2="736" y2="96"/><line class="sep" x1="528" y1="156" x2="736" y2="156"/><text class="hd" x="632" y="86" text-anchor="middle">Populacao</text><text x="540" y="114">- ano: int</text><text x="540" y="130">- quantidade: int</text><text x="540" y="174">+ validar(): bool</text>
+            <rect class="bx" x="24" y="288" width="208" height="152" rx="8"/><line class="sep" x1="24" y1="320" x2="232" y2="320"/><line class="sep" x1="24" y1="380" x2="232" y2="380"/><text class="hd" x="128" y="310" text-anchor="middle">CasoHepatite</text><text x="36" y="338">- ano: int</text><text x="36" y="354">- quantidade: int</text><text x="36" y="398">+ validar(): bool</text>
+            <rect class="bx main" x="276" y="288" width="208" height="152" rx="8"/><line class="sep" x1="276" y1="320" x2="484" y2="320"/><line class="sep" x1="276" y1="380" x2="484" y2="380"/><text class="hd" x="380" y="310" text-anchor="middle">UF</text><text x="288" y="338">- codigo: int</text><text x="288" y="354">- sigla: str</text><text x="288" y="370">- nome: str</text><text x="288" y="398">+ taxaDeteccao(ano): float</text><text x="288" y="414">+ cobertura(ano): float</text><text x="288" y="430">+ prioritaria(ano): bool</text>
+            <rect class="bx" x="528" y="288" width="208" height="152" rx="8"/><line class="sep" x1="528" y1="320" x2="736" y2="320"/><line class="sep" x1="528" y1="380" x2="736" y2="380"/><text class="hd" x="632" y="310" text-anchor="middle">CoberturaVacinal</text><text x="540" y="338">- ano: int</text><text x="540" y="354">- percentual: float</text><text x="540" y="398">+ abaixoDaMeta(meta): bool</text>
+            <rect class="bx" x="528" y="512" width="208" height="152" rx="8"/><line class="sep" x1="528" y1="544" x2="736" y2="544"/><line class="sep" x1="528" y1="604" x2="736" y2="604"/><text class="hd" x="632" y="534" text-anchor="middle">Imunobiologico</text><text x="540" y="562">- id: int</text><text x="540" y="578">- nome: str</text>
+            <text class="q" x="388" y="236">1</text><text class="q" x="388" y="282">1..*</text><text class="q" x="136" y="236">*</text><text class="q" x="306" y="282" text-anchor="end">1</text><text class="q" x="238" y="356">*</text><text class="q" x="270" y="356" text-anchor="end">1</text><text class="q" x="490" y="356">1</text><text class="q" x="522" y="356" text-anchor="end">*</text><text class="q" x="448" y="280">1</text><text class="q" x="640" y="236">*</text><text class="q" x="640" y="460">*</text><text class="q" x="640" y="504">1</text>
+            <text class="q" x="24" y="690">- atributo privado · + método público · 1, * e 1..* = multiplicidade</text>
+          </svg>
+        </div>
+        <div class="ob-card" id="caso-uso">
+          <h3>Diagrama de caso de uso</h3>
+          <svg class="ob-diag" viewBox="0 0 760 544" role="img" aria-label="Caso de uso: analista importa, higieniza e exporta dados; gestor gera ranking e compara regiões; cidadão consulta indicadores">
+            <rect class="zone" x="200" y="56" width="360" height="464" rx="8"/><text class="hd" x="380" y="84" text-anchor="middle">Sistema: Observatório da Hepatite B</text>
+            <path class="ln" d="M112 196L230 124"/><path class="ln" d="M112 196L230 268"/><path class="ln" d="M112 196L230 340"/><path class="ln" d="M648 196L530 340"/><path class="ln" d="M648 406L530 340"/><path class="ln" d="M648 406L530 412"/><path class="ln" d="M648 406L530 484"/>
+            <path class="ln" d="M380 146V174" stroke-dasharray="4 3"/><path class="ln" d="M374 168L380 174L386 168"/><text class="q" x="392" y="164">«include»</text>
+            <ellipse class="bx" cx="380" cy="124" rx="150" ry="22"/><text x="380" y="128" text-anchor="middle">Importar arquivos do TabNet</text>
+            <ellipse class="bx" cx="380" cy="196" rx="150" ry="22"/><text x="380" y="200" text-anchor="middle">Higienizar os dados</text>
+            <ellipse class="bx" cx="380" cy="268" rx="150" ry="22"/><text x="380" y="272" text-anchor="middle">Exportar base para mineração</text>
+            <ellipse class="bx" cx="380" cy="340" rx="150" ry="22"/><text x="380" y="344" text-anchor="middle">Consultar indicadores por UF</text>
+            <ellipse class="bx main" cx="380" cy="412" rx="150" ry="22"/><text class="hd" x="380" y="416" text-anchor="middle">Gerar ranking de UFs prioritárias</text>
+            <ellipse class="bx" cx="380" cy="484" rx="150" ry="22"/><text x="380" y="488" text-anchor="middle">Comparar regiões</text>
+            <g class="act"><circle cx="96" cy="176" r="10"/><path d="M96 186V216M82 196H110M96 216L84 236M96 216L108 236"/></g><text x="96" y="256" text-anchor="middle">Analista de dados</text>
+            <g class="act"><circle cx="664" cy="176" r="10"/><path d="M664 186V216M650 196H678M664 216L652 236M664 216L676 236"/></g><text x="664" y="256" text-anchor="middle">Cidadão</text>
+            <g class="act"><circle cx="664" cy="386" r="10"/><path d="M664 396V426M650 406H678M664 426L652 446M664 426L676 446"/></g><text x="664" y="466" text-anchor="middle">Gestor de vigilância</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div id="fisica">
+      <h2>7. Modelagem física: banco de dados</h2>
+      <p>Banco em PostgreSQL 16, criado pelo script <b>observatorio_hepb.sql</b>: 7 tabelas, 1 índice e a visão <b>vw_indicadores_uf</b>, que calcula a taxa por 100 mil habitantes.</p>
+      <div class="ob-g2">
+        <div class="ob-card">
+          <h3>Registros carregados por tabela</h3>
+          <div class="ob-tw">
+            <table class="ob-t" data-source="registros" data-row-key="tabela">
+              <thead><tr><th data-field="tabela">Tabela</th><th data-field="registros" class="n">Registros</th></tr></thead>
+              <tbody data-draw="registros"></tbody>
+            </table>
+          </div>
+          <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">A cobertura soma hepatite B (sem 2013, ano sem dado) e hepatite A (2014 a 2022).</p>
+        </div>
+        <div class="ob-card">
+          <h3>DDL: tabela de cobertura vacinal</h3>
+<pre class="ob-code">CREATE TABLE cobertura_vacinal (
+    cod_uf         SMALLINT     NOT NULL REFERENCES uf (cod_uf),
+    ano            SMALLINT     NOT NULL CHECK (ano BETWEEN 2000 AND 2100),
+    id_imuno       SMALLINT     NOT NULL REFERENCES imunobiologico (id_imuno),
+    perc_cobertura NUMERIC(6,2) CHECK (perc_cobertura &gt;= 0),
+    PRIMARY KEY (cod_uf, ano, id_imuno)
+);</pre>
+          <h3 style="margin-top: var(--cds-gap-md)">DML: carga de um CSV real</h3>
+<pre class="ob-code">CREATE TEMP TABLE stg (cod_uf SMALLINT, nome_uf TEXT, ano SMALLINT, valor NUMERIC);
+\copy stg FROM 'cobertura_hepb30.csv' WITH (FORMAT csv, HEADER true)
+INSERT INTO cobertura_vacinal
+    SELECT cod_uf, ano, 1, valor FROM stg WHERE valor IS NOT NULL;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div id="aplicacao">
+      <h2>8. Aplicação em Python e benchmarking</h2>
+      <p>A aplicação (<b>observatorio.py</b>, <b>benchmark.py</b> e o painel Streamlit <b>app.py</b>) integra os cinco arquivos, calcula as tendências, aplica os critérios de seleção e compara algoritmos de mineração com as mesmas métricas e a mesma semente aleatória.</p>
+      <div class="ob-g2">
+        <div class="ob-card">
+          <h3>Previsão da taxa (regressão)</h3>
+          <p class="ob-cap">5 algoritmos, 2 validações temporais, com e sem a taxa do ano anterior. No teste pós-pandemia:</p>
+          <p>Melhor algoritmo: <b>Random Forest</b>, RMSE <b data-draw="val" data-src="regressao" data-campo="RMSE" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;atributos=Com taxa do ano anterior&amp;modelo=Random Forest" data-fmt="n2">—</b>. Regra “repetir o ano anterior”: RMSE <b data-draw="val" data-src="regressao" data-campo="RMSE" data-onde="validacao=Pós-pandemia (treino 2015-2020, teste 2021-2022)&amp;atributos=Referência&amp;modelo=Repetir o ano anterior" data-fmt="n2">—</b>. Nenhum algoritmo superou a regra simples: a série tem forte inércia.</p>
+        </div>
+        <div class="ob-card">
+          <h3>Perfis de UFs (agrupamento)</h3>
+          <p class="ob-cap">K-Means, Hierárquico (Ward) e DBSCAN, avaliados por silhueta e Davies-Bouldin.</p>
+          <p>Melhor configuração: <b>K-Means com 2 grupos</b>, silhueta <b data-draw="val" data-src="agrupamento" data-campo="silhueta" data-onde="algoritmo=K-Means&amp;parametro=k=2" data-fmt="n3">—</b>. Separou um grupo de taxa alta, majoritariamente do Norte, das demais UFs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="conclusoes">
+      <h2>9. Conclusões</h2>
+      <ol class="ob-steps">
+        <li><b>Priorizar</b><span class="ob-fase">Em 2022, com limiar de 90%, <span data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref=2022&amp;limiar=90" data-fmt="n0">—</span> UFs têm prioridade alta: RS, SP, SC, PR, MT, AC e RR.</span></li>
+        <li><b>Contexto nacional</b><span class="ob-fase">A taxa caiu de <span data-draw="val" data-src="nacional" data-campo="taxa" data-onde="ano=2019" data-fmt="n2">—</span> (2019) para <span data-draw="val" data-src="nacional" data-campo="taxa" data-onde="ano=2022" data-fmt="n2">—</span> (2022) por 100 mil; a queda de 2020 reflete menos diagnóstico na pandemia.</span></li>
+        <li><b>Vacina e taxa</b><span class="ob-fase">Correlação entre cobertura de hepatite B e taxa: r = <span data-draw="val" data-src="correlacoes" data-campo="r" data-onde="periodo=2014-2022&amp;x=taxa&amp;y=cob_hepb" data-fmt="n3">—</span>. Os casos somam todas as hepatites, a maioria em adultos, e a vacina ao nascer age em décadas.</span></li>
+        <li><b>Previsão</b><span class="ob-fase">O histórico da UF explica a taxa (r com o ano anterior: <span data-draw="val" data-src="correlacoes" data-campo="r" data-onde="periodo=2014-2022&amp;x=taxa&amp;y=taxa_ano_anterior" data-fmt="n3">—</span>); use a taxa do ano anterior como linha de base.</span></li>
+      </ol>
+      <details style="margin-top: var(--cds-gap-md)">
+        <summary>Limitações e fontes</summary>
+        <p style="margin-top: var(--cds-gap-sm)">Limitações: o TabNet não separa os casos por etiologia de 2013 a 2022; há coberturas acima de 100% (doses aplicadas fora da UF de residência ou denominador defasado); os dados do Espírito Santo de 2020 a 2022 estão incompletos no TabNet; 27 UFs formam uma amostra pequena para agrupamento.</p>
+        <p>Fontes: BRASIL. Ministério da Saúde. DATASUS: Informações de Saúde (TABNET): Sinan, SI-PNI, Sinasc e estimativas populacionais do IBGE. Dados extraídos em outubro de 2026. BRASIL. Lei nº 6.259, de 30 de outubro de 1975. BRASIL. Ministério da Saúde. Portaria GM/MS nº 5.201, de 15 de agosto de 2024.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ABA 2: DASHBOARDS                                             -->
+  <!-- ============================================================ -->
+  <section class="ob-page" id="paineis" hidden>
+    <div class="ob-bar ob-filtros">
+      <nav class="ob-tabs" role="tablist" aria-label="Painéis">
+        <button class="ob-tab" role="tab" data-sub="p-visao" aria-selected="true">Visão geral</button>
+        <button class="ob-tab" role="tab" data-sub="p-mapa" aria-selected="false">Mapa por UF</button>
+        <button class="ob-tab" role="tab" data-sub="p-cruz" aria-selected="false">Cruzamentos</button>
+        <button class="ob-tab" role="tab" data-sub="p-crit" aria-selected="false">Critérios e prioridade</button>
+        <button class="ob-tab" role="tab" data-sub="p-tend" aria-selected="false">Tendências</button>
+        <button class="ob-tab" role="tab" data-sub="p-min" aria-selected="false">Mineração</button>
+        <button class="ob-tab" role="tab" data-sub="p-qual" aria-selected="false">Qualidade dos dados</button>
+      </nav>
+      <div class="ob-controls">
+        <label>Ano de referência
+          <select class="dash-select" id="sel-ano" aria-label="Ano de referência">
+            <option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option>
+          </select>
+        </label>
+        <label>Limiar de cobertura
+          <select class="dash-select" id="sel-limiar" aria-label="Limiar de cobertura vacinal">
+            <option value="95">95%</option><option value="90">90%</option><option value="85">85%</option><option value="80">80%</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <!-- Visão geral -->
+    <section class="ob-sub" id="p-visao">
+      <div class="ob-kpis">
+        <div class="ob-card ob-kpi" id="kpi-taxa"><span class="ob-l">Taxa de detecção por 100 mil hab.</span><span class="ob-v" data-draw="val" data-src="nacional" data-campo="taxa" data-onde="ano={ano}" data-fmt="n2">—</span><span class="ob-l"><span data-draw="val" data-src="nacional" data-campo="var_taxa" data-onde="ano={ano}" data-fmt="s2" data-bom="neg">—</span> em relação ao ano anterior</span></div>
+        <div class="ob-card ob-kpi" id="kpi-casos"><span class="ob-l">Casos confirmados de hepatites virais</span><span class="ob-v" data-draw="val" data-src="nacional" data-campo="casos" data-onde="ano={ano}" data-fmt="n0">—</span><span class="ob-l">Soma das 27 UFs no ano</span></div>
+        <div class="ob-card ob-kpi" id="kpi-hepb"><span class="ob-l">Cobertura hepatite B até 30 dias (média das UFs)</span><span class="ob-v"><span data-draw="val" data-src="nacional" data-campo="cob_hepb_media" data-onde="ano={ano}" data-fmt="n1">—</span>%</span><span class="ob-l"><span data-draw="val" data-src="nacional" data-campo="var_cob_hepb" data-onde="ano={ano}" data-fmt="s1" data-bom="pos">—</span> p.p. em relação ao ano anterior</span></div>
+        <div class="ob-card ob-kpi" id="kpi-hepa"><span class="ob-l">Cobertura hepatite A (média das UFs)</span><span class="ob-v"><span data-draw="val" data-src="nacional" data-campo="cob_hepa_media" data-onde="ano={ano}" data-fmt="n1">—</span>%</span><span class="ob-l">Vacina aplicada aos 15 meses</span></div>
+        <div class="ob-card ob-kpi" id="kpi-alta"><span class="ob-l">UFs de prioridade alta</span><span class="ob-v" data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</span><span class="ob-l"><span data-draw="val" data-src="criterios_resumo" data-campo="n_media" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</span> de prioridade média</span></div>
+      </div>
+      <div class="ob-g2">
+        <div class="ob-card" id="c-nacional">
+          <h3>Taxa nacional de hepatites virais, 2013 a 2022</h3>
+          <p class="ob-cap">Casos por 100 mil habitantes. O ano de referência aparece destacado.</p>
+          <div class="ob-chart" data-draw="g-nacional" data-source="nacional"></div>
+        </div>
+        <div class="ob-card" id="c-cobertura">
+          <h3>Cobertura vacinal média das UFs</h3>
+          <p class="ob-cap">Hepatite B até 30 dias e hepatite A (%). A linha tracejada é o limiar escolhido.</p>
+          <div class="ob-chart" data-draw="g-cobertura" data-source="nacional"></div>
+        </div>
+      </div>
+      <div class="ob-g2">
+        <div class="ob-card" id="c-regional">
+          <h3>Taxa de detecção por região</h3>
+          <p class="ob-cap">Casos por 100 mil habitantes. O Sul e o Norte ficam acima do país em quase toda a série.</p>
+          <div class="ob-chart" data-draw="g-regional" data-source="regional"></div>
+        </div>
+        <div class="ob-card" id="c-reg-cob">
+          <h3>Cobertura hepatite B por região</h3>
+          <p class="ob-cap">Média simples das UFs de cada região (%). A linha tracejada é o limiar escolhido.</p>
+          <div class="ob-chart" data-draw="reg-cob" data-source="indicadores"></div>
+        </div>
+      </div>
+      <div class="ob-legend" data-draw="leg-regiao"></div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="ob-sub" id="p-mapa" hidden>
+      <div class="ob-card" id="c-mapa">
+        <div class="ob-bar">
+          <div><h3>Mapa por UF</h3><p class="ob-cap">Cada quadrado é uma UF, na posição aproximada do mapa. Passe o mouse para ver os valores.</p></div>
+          <label class="ob-controls">Indicador
+            <select class="dash-select" id="sel-ind-mapa" aria-label="Indicador do mapa">
+              <option value="taxa">Taxa de detecção (por 100 mil)</option>
+              <option value="cob_hepb">Cobertura hepatite B até 30 dias (%)</option>
+              <option value="cob_hepa">Cobertura hepatite A (%)</option>
+              <option value="natalidade">Natalidade (por mil hab.)</option>
+              <option value="casos">Casos confirmados</option>
+              <option value="prioridade">Prioridade (critérios)</option>
+            </select>
+          </label>
+        </div>
+        <div class="ob-g2">
+          <div class="ob-chart ob-alto" data-draw="mapa" data-source="indicadores criterios"></div>
+          <div class="ob-tw" style="max-height: 460px; overflow-y: auto;">
+            <table class="ob-t" data-draw="rank" data-source="indicadores" data-row-key="uf,ano"></table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cruzamentos -->
+    <section class="ob-sub" id="p-cruz" hidden>
+      <div class="ob-card" id="c-cruz">
+        <div class="ob-bar">
+          <div><h3>Cruzamento entre indicadores</h3><p class="ob-cap">Cada ponto é uma UF. A reta é a tendência linear entre os dois indicadores.</p></div>
+          <div class="ob-controls">
+            <label>Eixo horizontal
+              <select class="dash-select" id="sel-x" aria-label="Indicador do eixo horizontal">
+                <option value="cob_hepb">Cobertura hepatite B (%)</option><option value="cob_hepa">Cobertura hepatite A (%)</option><option value="natalidade">Natalidade (por mil)</option><option value="taxa">Taxa por 100 mil</option>
+              </select>
+            </label>
+            <label>Eixo vertical
+              <select class="dash-select" id="sel-y" aria-label="Indicador do eixo vertical">
+                <option value="taxa">Taxa por 100 mil</option><option value="cob_hepb">Cobertura hepatite B (%)</option><option value="cob_hepa">Cobertura hepatite A (%)</option><option value="natalidade">Natalidade (por mil)</option>
+              </select>
+            </label>
+            <label>Período
+              <select class="dash-select" id="sel-per" aria-label="Período dos pontos">
+                <option value="ano">Ano de referência</option><option value="todos">2014 a 2022 (todos os anos)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <p>Correlação de Pearson no período: r = <b data-draw="corr-r" data-source="correlacoes" data-field="r">—</b> <span class="ob-cap" data-draw="corr-leitura">—</span></p>
+        <div class="ob-chart ob-alto" data-draw="cruz" data-source="indicadores"></div>
+        <div class="ob-legend" data-draw="leg-regiao"></div>
+      </div>
+      <div class="ob-card" id="c-corr">
+        <h3>Matriz de correlação entre os indicadores</h3>
+        <p class="ob-cap">Pares UF e ano, no período escolhido. Valores perto de 1 ou de −1 indicam relação linear forte; perto de 0, nenhuma. A taxa só se relaciona fortemente com ela mesma no ano anterior.</p>
+        <div class="ob-chart" data-draw="corr" data-source="correlacoes"></div>
+      </div>
+      <div class="ob-card" id="c-delta">
+        <div class="ob-bar">
+          <div><h3>Variação da cobertura x variação da taxa</h3><p class="ob-cap">Cada ponto é uma UF, comparando o ano base com o ano de referência. À esquerda da linha vertical, a cobertura caiu; acima da horizontal, a taxa subiu. O quadrante superior esquerdo reúne as UFs que pioraram nos dois indicadores.</p></div>
+          <label class="ob-controls">Ano base
+            <select class="dash-select" id="sel-base" aria-label="Ano base da comparação"><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option></select>
+          </label>
+        </div>
+        <div class="ob-chart" data-draw="delta" data-source="indicadores"></div>
+        <div class="ob-legend" data-draw="leg-regiao"></div>
+      </div>
+      <div class="ob-card" id="c-part">
+        <h3>Peso de cada região: casos, população e nascidos</h3>
+        <p class="ob-cap">Participação percentual de cada região no total do país, no ano de referência. Quando a barra de casos supera a de população, a região concentra mais casos do que o seu tamanho explicaria.</p>
+        <div class="ob-chart" data-draw="participacao" data-source="indicadores"></div>
+        <div class="ob-legend" data-draw="leg-part"></div>
+      </div>
+    </section>
+
+    <!-- Critérios -->
+    <section class="ob-sub" id="p-crit" hidden>
+      <div class="ob-g4">
+        <div class="ob-card ob-kpi"><span class="ob-l">Prioridade alta</span><span class="ob-v" data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</span><span class="ob-l">C1 e C2 ao mesmo tempo</span></div>
+        <div class="ob-card ob-kpi"><span class="ob-l">Prioridade média</span><span class="ob-v" data-draw="val" data-src="criterios_resumo" data-campo="n_media" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</span><span class="ob-l">C1 ou C2, com tendência desfavorável</span></div>
+        <div class="ob-card ob-kpi"><span class="ob-l">Taxa nacional (C2)</span><span class="ob-v" data-draw="val" data-src="criterios_resumo" data-campo="taxa_br" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n2">—</span><span class="ob-l">Casos por 100 mil no ano de referência</span></div>
+        <div class="ob-card ob-kpi"><span class="ob-l">Tendência nacional da taxa (C4)</span><span class="ob-v"><span data-draw="val" data-src="criterios_resumo" data-campo="tend_taxa_br" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n1">—</span>%</span><span class="ob-l">Variação média ao ano, de 2014 ao ano de referência</span></div>
+      </div>
+      <div class="ob-card" id="c-def">
+        <h3>Critérios de seleção de dados</h3>
+        <div class="ob-tw">
+          <table class="ob-t">
+            <thead><tr><th>Critério</th><th>Regra</th><th>Leitura para o negócio</th></tr></thead>
+            <tbody>
+              <tr><td>C1 Cobertura baixa</td><td>Cobertura de hepatite B até 30 dias abaixo de <b data-draw="p" data-param="limiar">—</b>% no ano de referência</td><td>Proteção insuficiente das novas gerações</td></tr>
+              <tr><td>C2 Taxa alta</td><td>Taxa de detecção acima da nacional no ano de referência</td><td>Carga de doença acima da média do país</td></tr>
+              <tr><td>C3 Cobertura caindo</td><td>Tendência negativa da cobertura, de 2014 ao ano de referência</td><td>A proteção tende a piorar</td></tr>
+              <tr><td>C4 Taxa resistente</td><td>Taxa cai, em % ao ano, menos que a nacional (ou sobe)</td><td>O problema não acompanha a melhora do país</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Prioridade alta = C1 e C2. Média = só C1 ou só C2, com C3 ou C4. Baixa = demais casos.</p>
+      </div>
+      <div class="ob-card" id="c-crit-sc">
+        <h3>Cobertura x taxa de detecção por UF</h3>
+        <p class="ob-cap">As linhas tracejadas são o limiar de cobertura e a taxa nacional. O quadrante superior esquerdo reúne as UFs de prioridade alta. O tamanho do ponto é o número de casos.</p>
+        <div class="ob-chart ob-alto" data-draw="crit-sc" data-source="criterios criterios_resumo"></div>
+        <div class="ob-legend"><span><i style="background: var(--ob-crit)"></i>Alta</span><span><i style="background: var(--ob-warn)"></i>Média</span><span><i style="background: var(--ob-low)"></i>Baixa</span></div>
+      </div>
+      <div class="ob-card" id="c-reg-prior">
+        <h3>Prioridade por região</h3>
+        <p class="ob-cap">Número de UFs de cada região em cada nível de prioridade, no ano e limiar escolhidos. Os rótulos mostram as UFs.</p>
+        <div class="ob-chart" data-draw="reg-prior" data-source="criterios"></div>
+        <div class="ob-legend" data-draw="leg-prior"></div>
+      </div>
+      <div class="ob-card" id="c-crit-tab">
+        <h3>UFs por prioridade</h3>
+        <div class="ob-tw">
+          <table class="ob-t" data-source="criterios" data-row-key="ano_ref,limiar,uf">
+            <thead><tr><th data-field="uf">UF</th><th data-field="regiao">Região</th><th data-field="taxa" class="n">Taxa</th><th data-field="cob_hepb" class="n">Cobertura (%)</th><th data-field="tend_taxa_rel" class="n">Tend. taxa (% ao ano)</th><th data-field="tend_cob_hepb" class="n">Tend. cobertura (p.p./ano)</th><th data-field="C1_cobertura_baixa">C1</th><th data-field="C2_taxa_alta">C2</th><th data-field="C3_cobertura_caindo">C3</th><th data-field="C4_taxa_resistente">C4</th><th data-field="prioridade">Prioridade</th></tr></thead>
+            <tbody data-draw="crit-tab"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tendências -->
+    <section class="ob-sub" id="p-tend" hidden>
+      <div class="ob-card" id="c-tend">
+        <div class="ob-bar">
+          <div><h3>Evolução por UF</h3><p class="ob-cap">Escolha as UFs para comparar. Começa com as de prioridade alta no ano e limiar escolhidos. A linha mais grossa é o Brasil.</p></div>
+          <label class="ob-controls">Indicador
+            <select class="dash-select" id="sel-ind-tend" aria-label="Indicador da evolução">
+              <option value="taxa">Taxa de detecção (por 100 mil)</option><option value="cob_hepb">Cobertura hepatite B até 30 dias (%)</option><option value="cob_hepa">Cobertura hepatite A (%)</option><option value="natalidade">Natalidade (por mil hab.)</option>
+            </select>
+          </label>
+        </div>
+        <div class="ob-chips" data-draw="tend-ufs" data-source="indicadores"></div>
+        <div class="ob-chart ob-alto" data-draw="tend" data-source="indicadores nacional"></div>
+      </div>
+      <div class="ob-card" id="c-tend-bar">
+        <h3>Tendência da taxa por UF</h3>
+        <p class="ob-cap">Variação média da taxa em % ao ano, de 2014 ao ano de referência. Negativo é queda. A linha tracejada é o Brasil; barras à direita dela indicam UFs que melhoram menos que o país (C4).</p>
+        <div class="ob-chart ob-alto" data-draw="tend-bar" data-source="criterios criterios_resumo"></div>
+      </div>
+      <div class="ob-card" id="c-calor">
+        <div class="ob-bar">
+          <div><h3>Mapa de calor: UF por ano</h3><p class="ob-cap">Quanto mais intensa a cor, maior o valor. UFs agrupadas por região (Norte, Nordeste, Sudeste, Sul e Centro-Oeste). O ano de referência aparece destacado.</p></div>
+          <label class="ob-controls">Indicador
+            <select class="dash-select" id="sel-ind-calor" aria-label="Indicador do mapa de calor">
+              <option value="taxa">Taxa de detecção (por 100 mil)</option><option value="cob_hepb">Cobertura hepatite B até 30 dias (%)</option><option value="cob_hepa">Cobertura hepatite A (%)</option><option value="natalidade">Natalidade (por mil hab.)</option>
+            </select>
+          </label>
+        </div>
+        <div class="ob-chart" data-draw="calor" data-source="indicadores"></div>
+      </div>
+    </section>
+
+    <!-- Mineração -->
+    <section class="ob-sub" id="p-min" hidden>
+      <div class="ob-card" id="c-bm-reg">
+        <div class="ob-bar">
+          <div><h3>Benchmarking de regressão: erro ao prever a taxa</h3><p class="ob-cap">RMSE em casos por 100 mil (menor é melhor). Os modelos aprendem com anos passados e são testados em anos seguintes.</p></div>
+          <label class="ob-controls">Validação
+            <select class="dash-select" id="sel-val" aria-label="Validação temporal">
+              <option value="Pós-pandemia (treino 2015-2020, teste 2021-2022)">Pós-pandemia (teste 2021 e 2022)</option>
+              <option value="Pré-pandemia (treino 2015-2018, teste 2019)">Pré-pandemia (teste 2019)</option>
+            </select>
+          </label>
+        </div>
+        <div class="ob-chart" data-draw="bm-reg" data-source="regressao"></div>
+        <div class="ob-legend" data-draw="leg-atrib"></div>
+        <div class="ob-tw" style="margin-top: var(--cds-gap-md)">
+          <table class="ob-t" data-source="regressao" data-row-key="validacao,atributos,modelo">
+            <thead><tr><th data-field="atributos">Atributos</th><th data-field="modelo">Algoritmo</th><th data-field="MAE" class="n">MAE</th><th data-field="RMSE" class="n">RMSE</th><th data-field="R2" class="n">R²</th><th data-field="tempo_ms" class="n">Tempo (ms)</th></tr></thead>
+            <tbody data-draw="bm-tab"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ob-g2">
+        <div class="ob-card" id="c-bm-imp">
+          <h3>Peso de cada atributo na previsão</h3>
+          <p class="ob-cap">Importância no Random Forest com a taxa do ano anterior.</p>
+          <div class="ob-chart" data-draw="bm-imp" data-source="importancia"></div>
+        </div>
+        <div class="ob-card" id="c-bm-grp">
+          <h3>Perfis de UFs (melhor agrupamento)</h3>
+          <p class="ob-cap">Médias de 2014 a 2022. Cada cor é um grupo do K-Means com 2 grupos.</p>
+          <div class="ob-chart" data-draw="bm-grp" data-source="grupos"></div>
+          <div data-draw="grp-lista" data-source="grupos"></div>
+        </div>
+      </div>
+      <div class="ob-card" id="c-bm-grp-tab">
+        <h3>Benchmarking de agrupamento</h3>
+        <p class="ob-cap">Silhueta de −1 a 1 (maior é melhor) e Davies-Bouldin (menor é melhor). O DBSCAN descarta muitas UFs como ruído.</p>
+        <div class="ob-tw">
+          <table class="ob-t" data-source="agrupamento" data-row-key="algoritmo,parametro">
+            <thead><tr><th data-field="algoritmo">Algoritmo</th><th data-field="parametro">Parâmetro</th><th data-field="grupos" class="n">Grupos</th><th data-field="ruido" class="n">Ruído</th><th data-field="silhueta" class="n">Silhueta</th><th data-field="davies_bouldin" class="n">Davies-Bouldin</th><th data-field="tempo_ms" class="n">Tempo (ms)</th></tr></thead>
+            <tbody data-draw="bm-grp-tab"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qualidade -->
+    <section class="ob-sub" id="p-qual" hidden>
+      <div class="ob-g2">
+        <div class="ob-card" id="c-q-resumo">
+          <h3>Resumo da base integrada</h3>
+          <div class="ob-tw">
+            <table class="ob-t" data-source="qualidade" data-row-key="item">
+              <thead><tr><th data-field="item">Item</th><th data-field="valor" class="n">Valor</th></tr></thead>
+              <tbody data-draw="q-tab"></tbody>
+            </table>
+          </div>
+          <p class="ob-cap" style="margin-top: var(--cds-gap-sm)">Os dados do Espírito Santo de 2020 a 2022 estão incompletos no TabNet (a UF passou a usar o e-SUS VS). O campo de etiologia está vazio em todo o período.</p>
+        </div>
+        <div class="ob-card" id="c-q-acima">
+          <h3>Coberturas acima de 100%</h3>
+          <p class="ob-cap">Mantidas por serem o dado oficial. Ocorrem quando há mais doses aplicadas do que o público estimado.</p>
+          <div class="ob-tw" style="max-height: 420px; overflow-y: auto;">
+            <table class="ob-t" data-source="acima100" data-row-key="uf,ano,vacina">
+              <thead><tr><th data-field="uf">UF</th><th data-field="ano">Ano</th><th data-field="vacina">Vacina</th><th data-field="cobertura" class="n">Cobertura (%)</th></tr></thead>
+              <tbody data-draw="q-acima"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ob-foot"><span class="ob-cap">Fonte: Ministério da Saúde, DATASUS (TabNet): Sinan, SI-PNI, Sinasc e estimativas do IBGE. 27 UFs, 2013 a 2022. Casos = todas as hepatites virais.</span><span class="ob-cap">Faculdade Senac DF · Mineração de Dados · Glauco, Raquel e Mauro</span></div>
+  </section>
+</div>
+
+
+
+</div>
+<script src="core.js"></script>
+<script src="draw.js"></script>
+</body>
+</html>

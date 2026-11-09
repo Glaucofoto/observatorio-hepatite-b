@@ -1,0 +1,271 @@
+cod_uf,nome_uf,ano,qtd_nascidos
+11,Rondônia,2013,27160
+11,Rondônia,2014,27598
+11,Rondônia,2015,27889
+11,Rondônia,2016,26706
+11,Rondônia,2017,27523
+11,Rondônia,2018,28093
+11,Rondônia,2019,26937
+11,Rondônia,2020,25645
+11,Rondônia,2021,25307
+11,Rondônia,2022,24811
+12,Acre,2013,17719
+12,Acre,2014,17846
+12,Acre,2015,17676
+12,Acre,2016,16333
+12,Acre,2017,17033
+12,Acre,2018,17264
+12,Acre,2019,17048
+12,Acre,2020,15945
+12,Acre,2021,16562
+12,Acre,2022,15193
+13,Amazonas,2013,78540
+13,Amazonas,2014,80584
+13,Amazonas,2015,79531
+13,Amazonas,2016,76208
+13,Amazonas,2017,77518
+13,Amazonas,2018,77534
+13,Amazonas,2019,77098
+13,Amazonas,2020,75073
+13,Amazonas,2021,77839
+13,Amazonas,2022,72056
+14,Roraima,2013,10797
+14,Roraima,2014,11100
+14,Roraima,2015,11409
+14,Roraima,2016,11362
+14,Roraima,2017,11710
+14,Roraima,2018,13315
+14,Roraima,2019,14586
+14,Roraima,2020,13738
+14,Roraima,2021,13863
+14,Roraima,2022,13056
+15,Pará,2013,137634
+15,Pará,2014,141521
+15,Pará,2015,141556
+15,Pará,2016,135701
+15,Pará,2017,136592
+15,Pará,2018,139442
+15,Pará,2019,136064
+15,Pará,2020,130999
+15,Pará,2021,135265
+15,Pará,2022,126071
+16,Amapá,2013,16840
+16,Amapá,2014,17566
+16,Amapá,2015,17100
+16,Amapá,2016,16850
+16,Amapá,2017,16795
+16,Amapá,2018,17440
+16,Amapá,2019,16902
+16,Amapá,2020,15995
+16,Amapá,2021,16389
+16,Amapá,2022,15065
+17,Tocantins,2013,23688
+17,Tocantins,2014,24459
+17,Tocantins,2015,24609
+17,Tocantins,2016,23370
+17,Tocantins,2017,24338
+17,Tocantins,2018,24942
+17,Tocantins,2019,24034
+17,Tocantins,2020,23472
+17,Tocantins,2021,23272
+17,Tocantins,2022,22284
+21,Maranhão,2013,112883
+21,Maranhão,2014,115235
+21,Maranhão,2015,115893
+21,Maranhão,2016,108537
+21,Maranhão,2017,111173
+21,Maranhão,2018,115158
+21,Maranhão,2019,111336
+21,Maranhão,2020,103756
+21,Maranhão,2021,106251
+21,Maranhão,2022,95898
+22,Piauí,2013,49013
+22,Piauí,2014,50457
+22,Piauí,2015,51716
+22,Piauí,2016,49693
+22,Piauí,2017,51147
+22,Piauí,2018,52248
+22,Piauí,2019,50464
+22,Piauí,2020,47865
+22,Piauí,2021,48729
+22,Piauí,2022,44591
+23,Ceará,2013,125026
+23,Ceará,2014,128827
+23,Ceará,2015,132721
+23,Ceará,2016,126377
+23,Ceará,2017,127853
+23,Ceará,2018,131540
+23,Ceará,2019,129158
+23,Ceará,2020,121891
+23,Ceará,2021,120262
+23,Ceará,2022,112549
+24,Rio Grande do Norte,2013,47267
+24,Rio Grande do Norte,2014,48635
+24,Rio Grande do Norte,2015,49527
+24,Rio Grande do Norte,2016,45909
+24,Rio Grande do Norte,2017,46709
+24,Rio Grande do Norte,2018,48641
+24,Rio Grande do Norte,2019,44623
+24,Rio Grande do Norte,2020,44084
+24,Rio Grande do Norte,2021,44116
+24,Rio Grande do Norte,2022,40572
+25,Paraíba,2013,56671
+25,Paraíba,2014,57148
+25,Paraíba,2015,58828
+25,Paraíba,2016,55724
+25,Paraíba,2017,57291
+25,Paraíba,2018,60092
+25,Paraíba,2019,57413
+25,Paraíba,2020,56125
+25,Paraíba,2021,55757
+25,Paraíba,2022,50930
+26,Pernambuco,2013,143215
+26,Pernambuco,2014,145024
+26,Pernambuco,2015,146209
+26,Pernambuco,2016,131773
+26,Pernambuco,2017,136803
+26,Pernambuco,2018,139057
+26,Pernambuco,2019,134419
+26,Pernambuco,2020,130272
+26,Pernambuco,2021,127916
+26,Pernambuco,2022,118135
+27,Alagoas,2013,51491
+27,Alagoas,2014,50888
+27,Alagoas,2015,51774
+27,Alagoas,2016,47380
+27,Alagoas,2017,49744
+27,Alagoas,2018,52004
+27,Alagoas,2019,49638
+27,Alagoas,2020,48095
+27,Alagoas,2021,48664
+27,Alagoas,2022,45781
+28,Sergipe,2013,35945
+28,Sergipe,2014,36040
+28,Sergipe,2015,36207
+28,Sergipe,2016,33159
+28,Sergipe,2017,35061
+28,Sergipe,2018,35455
+28,Sergipe,2019,33724
+28,Sergipe,2020,32805
+28,Sergipe,2021,32283
+28,Sergipe,2022,29514
+29,Bahia,2013,200392
+29,Bahia,2014,201338
+29,Bahia,2015,204207
+29,Bahia,2016,198214
+29,Bahia,2017,202287
+29,Bahia,2018,203396
+29,Bahia,2019,195050
+29,Bahia,2020,186103
+29,Bahia,2021,182476
+29,Bahia,2022,171246
+31,Minas Gerais,2013,258022
+31,Minas Gerais,2014,266425
+31,Minas Gerais,2015,267873
+31,Minas Gerais,2016,252961
+31,Minas Gerais,2017,260424
+31,Minas Gerais,2018,263067
+31,Minas Gerais,2019,256456
+31,Minas Gerais,2020,246922
+31,Minas Gerais,2021,241785
+31,Minas Gerais,2022,234232
+32,Espírito Santo,2013,53767
+32,Espírito Santo,2014,56194
+32,Espírito Santo,2015,56399
+32,Espírito Santo,2016,52991
+32,Espírito Santo,2017,55513
+32,Espírito Santo,2018,56337
+32,Espírito Santo,2019,54491
+32,Espírito Santo,2020,53407
+32,Espírito Santo,2021,52115
+32,Espírito Santo,2022,51621
+33,Rio de Janeiro,2013,224199
+33,Rio de Janeiro,2014,233681
+33,Rio de Janeiro,2015,237071
+33,Rio de Janeiro,2016,219174
+33,Rio de Janeiro,2017,223303
+33,Rio de Janeiro,2018,220495
+33,Rio de Janeiro,2019,207964
+33,Rio de Janeiro,2020,199066
+33,Rio de Janeiro,2021,189821
+33,Rio de Janeiro,2022,180278
+35,São Paulo,2013,612329
+35,São Paulo,2014,627389
+35,São Paulo,2015,635627
+35,São Paulo,2016,602970
+35,São Paulo,2017,613299
+35,São Paulo,2018,607702
+35,São Paulo,2019,584621
+35,São Paulo,2020,553437
+35,São Paulo,2021,526339
+35,São Paulo,2022,513879
+41,Paraná,2013,155502
+41,Paraná,2014,159380
+41,Paraná,2015,160403
+41,Paraná,2016,154636
+41,Paraná,2017,157436
+41,Paraná,2018,156227
+41,Paraná,2019,153564
+41,Paraná,2020,146471
+41,Paraná,2021,142197
+41,Paraná,2022,140824
+42,Santa Catarina,2013,89762
+42,Santa Catarina,2014,93285
+42,Santa Catarina,2015,97414
+42,Santa Catarina,2016,95466
+42,Santa Catarina,2017,98279
+42,Santa Catarina,2018,99395
+42,Santa Catarina,2019,97775
+42,Santa Catarina,2020,97754
+42,Santa Catarina,2021,96248
+42,Santa Catarina,2022,97871
+43,Rio Grande do Sul,2013,141491
+43,Rio Grande do Sul,2014,143440
+43,Rio Grande do Sul,2015,148415
+43,Rio Grande do Sul,2016,141446
+43,Rio Grande do Sul,2017,141608
+43,Rio Grande do Sul,2018,140052
+43,Rio Grande do Sul,2019,134575
+43,Rio Grande do Sul,2020,130600
+43,Rio Grande do Sul,2021,124349
+43,Rio Grande do Sul,2022,120916
+50,Mato Grosso do Sul,2013,41879
+50,Mato Grosso do Sul,2014,43588
+50,Mato Grosso do Sul,2015,43665
+50,Mato Grosso do Sul,2016,42009
+50,Mato Grosso do Sul,2017,44265
+50,Mato Grosso do Sul,2018,43767
+50,Mato Grosso do Sul,2019,43241
+50,Mato Grosso do Sul,2020,40870
+50,Mato Grosso do Sul,2021,41800
+50,Mato Grosso do Sul,2022,40188
+51,Mato Grosso,2013,52939
+51,Mato Grosso,2014,56386
+51,Mato Grosso,2015,56617
+51,Mato Grosso,2016,53346
+51,Mato Grosso,2017,57202
+51,Mato Grosso,2018,58548
+51,Mato Grosso,2019,58848
+51,Mato Grosso,2020,57012
+51,Mato Grosso,2021,57900
+51,Mato Grosso,2022,58059
+52,Goiás,2013,82262
+52,Goiás,2014,86316
+52,Goiás,2015,87673
+52,Goiás,2016,83605
+52,Goiás,2017,85466
+52,Goiás,2018,86613
+52,Goiás,2019,83649
+52,Goiás,2020,80255
+52,Goiás,2021,78369
+52,Goiás,2022,77526
+53,Distrito Federal,2013,57594
+53,Distrito Federal,2014,58909
+53,Distrito Federal,2015,59659
+53,Distrito Federal,2016,55900
+53,Distrito Federal,2017,57163
+53,Distrito Federal,2018,57108
+53,Distrito Federal,2019,55468
+53,Distrito Federal,2020,52488
+53,Distrito Federal,2021,51227
+53,Distrito Federal,2022,48776
