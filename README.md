@@ -2,7 +2,7 @@
 
 Trabalho final da disciplina de **Mineração de Dados**, Faculdade Senac Distrito Federal (Atividades Avaliativas 5 e 6).
 
-**Equipe:** Glauco, Raquel e Mauro.
+**Equipe:** Glauco Costa, Mauro Martins e Raquel Pereira.
 
 ## O que é
 
