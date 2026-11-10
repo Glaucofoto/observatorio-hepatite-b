@@ -10,10 +10,10 @@ const FMT = {
 };
 
 const COR = {
-  azul: '#F7941D', verde: '#FFD199', azulC: '#B35F12', verdeC: '#FFE8C7', teal: '#8FA9C4',
-  cinza: '#7D8893', crit: '#E5533D', warn: '#F2C94C', baixa: '#5B6670', texto: '#F2F2F2', muted: '#A3ACB5',
+  azul: '#7CC4FF', verde: '#FFFFFF', azulC: '#3F8FD9', verdeC: '#DDEFFF', teal: '#5EE0C1',
+  cinza: '#9AB2CC', crit: '#FF6B57', warn: '#F2C94C', baixa: '#7C93AD', texto: '#FFFFFF', muted: '#C3D4E8',
 };
-const COR_REGIAO = { 'Norte': '#F7941D', 'Nordeste': '#FFD199', 'Sudeste': '#8FA9C4', 'Sul': '#E6E6E6', 'Centro-Oeste': '#B35F12' };
+const COR_REGIAO = { 'Norte': '#7CC4FF', 'Nordeste': '#FFFFFF', 'Sudeste': '#5EE0C1', 'Sul': '#F5B6C8', 'Centro-Oeste': '#F2C94C' };
 const COR_PRIOR = { 'Alta': COR.crit, 'Média': COR.warn, 'Baixa': COR.baixa };
 
 const IND = {
@@ -361,7 +361,7 @@ OBX.dispersao = function (el, cfg) {
   const g = svg.append('g');
   g.selectAll('circle').data(pts).join('circle')
     .attr('cx', (p) => x(p.x)).attr('cy', (p) => y(p.y)).attr('r', (p) => p.r || 5)
-    .attr('fill', (p) => p.cor).attr('fill-opacity', 0.78).attr('stroke', '#050505').attr('stroke-width', 1)
+    .attr('fill', (p) => p.cor).attr('fill-opacity', 0.78).attr('stroke', '#00284D').attr('stroke-width', 1)
     .on('mousemove', (ev, p) => dica.mostrar(ev, p.dica)).on('mouseleave', () => dica.esconder());
   if (cfg.rotulos !== false) {
     g.selectAll('text').data(pts).join('text').attr('class', 'ob-lbl').attr('x', (p) => x(p.x) + (p.r || 5) + 3).attr('y', (p) => y(p.y) + 4)
