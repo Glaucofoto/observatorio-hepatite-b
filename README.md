@@ -1,6 +1,6 @@
 # Observatório da Hepatite B
 
-Trabalho final da disciplina de **Mineração de Dados**, Faculdade Senac Distrito Federal (Atividades Avaliativas 5 e 6).
+Trabalho final da disciplina de **Mineração de Dados**, turma do 1º semestre do Curso Superior de Tecnologia em Inteligência Artificial e Machine Learning, Faculdade Senac Distrito Federal (Atividades Avaliativas 5 e 6).
 
 **Equipe:** Glauco Costa, Mauro Martins e Raquel Pereira.
 
