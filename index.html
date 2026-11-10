@@ -37,7 +37,8 @@ html, body { margin: 0; background: #004587; }
 .ob-brand .ob-fac small { display: block; color: var(--ob-muted); letter-spacing: 0.04em; text-transform: none; font-weight: 400; font-size: 0.8rem; }
 .ob-badge { background: var(--ob-orange); color: #004587; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; }
 .ob-head { display: flex; flex-direction: column; gap: 8px; }
-.ob-curso { font-size: 0.92rem; font-weight: 700; color: #FFFFFF; margin: 0 0 6px; }
+.ob .ob-curso { font-size: 0.92rem; font-weight: 700; color: #FFFFFF; margin: 0 0 6px; max-width: none; }
+.ob .ob-kicker { max-width: none; }
 .ob-kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ob-green); margin: 0; }
 .ob-lead { font-size: 1.02rem; }
 .ob-lead b { color: var(--ob-blue); }
@@ -140,7 +141,7 @@ pre.ob-code { background: #00305C; color: #E6EEF5; border-left: 4px solid var(--
     <span class="ob-badge">Mineração de Dados · Trabalho final</span>
   </div>
   <header class="ob-head" id="topo">
-    <p class="ob-curso">Curso Superior de Tecnologia em Inteligência Artificial e Machine Learning · Turma do 1º semestre</p>
+    <p class="ob-curso">Curso Superior de Tecnologia em Inteligência Artificial e Machine Learning · Turma do 1º&nbsp;semestre</p>
     <p class="ob-kicker">Mineração de dados aplicada à saúde pública · Atividades Avaliativas 5 e 6</p>
     <h1>Observatório da Hepatite B</h1>
     <p class="ob-lead">Em <b data-draw="p" data-param="ano">—</b>, <b data-draw="val" data-src="criterios_resumo" data-campo="n_alta" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n0">—</b> das 27 UFs combinam cobertura vacinal contra hepatite B abaixo de <b data-draw="p" data-param="limiar">—</b>% e taxa de hepatites virais acima da nacional (<b data-draw="val" data-src="criterios_resumo" data-campo="taxa_br" data-onde="ano_ref={ano}&amp;limiar={limiar}" data-fmt="n2">—</b> casos por 100 mil habitantes).</p>
