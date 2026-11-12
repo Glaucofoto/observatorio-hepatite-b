@@ -123,9 +123,9 @@ dash.draw('mapa', (el) => {
     tile.append('rect').attr('width', s - 3).attr('height', s - 3).attr('fill', cor).attr('fill-opacity', opac)
       .attr('stroke', cor).attr('stroke-opacity', 0.5);
     tile.append('text').attr('x', (s - 3) / 2).attr('y', s * 0.42).attr('text-anchor', 'middle')
-      .style('fill', escuro ? '#00284D' : COR.texto).style('font-weight', 700).style('font-size', `${Math.max(10, s * 0.24)}px`).text(uf);
+      .style('fill', escuro ? '#FFFFFF' : COR.texto).style('font-weight', 700).style('font-size', `${Math.max(10, s * 0.24)}px`).text(uf);
     const t = tile.append('text').attr('x', (s - 3) / 2).attr('y', s * 0.72).attr('text-anchor', 'middle')
-      .style('fill', escuro ? '#00284D' : COR.texto).style('font-size', `${Math.max(9, s * 0.17)}px`);
+      .style('fill', escuro ? '#FFFFFF' : COR.texto).style('font-size', `${Math.max(9, s * 0.17)}px`);
     if (ind === 'prioridade') {
       t.text(pr ? pr.prioridade : '').attr('data-source', 'criterios').attr('data-field', 'prioridade')
         .attr('data-where', `ano_ref=${ano}&limiar=${limiar}&uf=${uf}`);
@@ -273,11 +273,11 @@ dash.draw('corr', (el) => {
       const v = a === b ? 1 : (r ? r.r : null);
       const gx = lw + j * cel, gy = 34 + i * cel;
       svg.append('rect').attr('x', gx + 1).attr('y', gy + 1).attr('width', cel - 2).attr('height', cel - 2)
-        .attr('fill', v == null ? '#0A1828' : (v >= 0 ? COR.azul : COR.teal)).attr('fill-opacity', v == null ? 1 : Math.max(0.06, Math.abs(v) * 0.9))
+        .attr('fill', v == null ? '#EEF2F6' : (v >= 0 ? COR.azul : COR.teal)).attr('fill-opacity', v == null ? 1 : Math.max(0.06, Math.abs(v) * 0.9))
         .on('mousemove', (ev) => dica.mostrar(ev, [`${curto[a]} x ${curto[b]}`, v == null ? 'sem dado' : `r = ${FMT.n3(v)}`, r ? `${r.n} pares UF e ano` : '']))
         .on('mouseleave', () => dica.esconder());
       const t = svg.append('text').attr('x', gx + cel / 2).attr('y', gy + cel / 2 + 4).attr('text-anchor', 'middle').style('pointer-events', 'none')
-        .style('font-weight', 700).style('font-size', '12px').style('fill', v != null && Math.abs(v) > 0.55 ? '#00284D' : COR.texto)
+        .style('font-weight', 700).style('font-size', '12px').style('fill', v != null && Math.abs(v) > 0.55 ? '#FFFFFF' : COR.texto)
         .text(v == null ? '' : (a === b ? '1' : FMT.n2(v)));
       if (r) t.attr('data-source', 'correlacoes').attr('data-field', 'r').attr('data-where', `periodo=${cod(r.periodo)}&x=${r.x}&y=${r.y}`);
     });
@@ -604,7 +604,7 @@ dash.draw('participacao', (el) => {
   const ano = OBX.param('ano');
   const ind = dash.data('indicadores').data.filter((r) => Number(r.ano) === ano);
   const tot = { casos: d3.sum(ind, (r) => +r.casos), populacao: d3.sum(ind, (r) => +r.populacao), nascidos: d3.sum(ind, (r) => +r.nascidos) };
-  const MED = [['casos', 'Casos', COR.azul], ['populacao', 'População', '#5EE0C1'], ['nascidos', 'Nascidos vivos', '#F5B6C8']];
+  const MED = [['casos', 'Casos', COR.azul], ['populacao', 'População', '#1BA39C'], ['nascidos', 'Nascidos vivos', '#D9578A']];
   const linhas = ORDEM_REG.map((reg) => {
     const u = ind.filter((r) => r.regiao === reg);
     const o = { reg };
@@ -631,7 +631,7 @@ dash.draw('participacao', (el) => {
   });
 });
 dash.draw('leg-part', (el) => {
-  el.replaceChildren(...[['Casos', COR.azul], ['População', '#5EE0C1'], ['Nascidos vivos', '#F5B6C8']].map(([nome, cor]) => {
+  el.replaceChildren(...[['Casos', COR.azul], ['População', '#1BA39C'], ['Nascidos vivos', '#D9578A']].map(([nome, cor]) => {
     const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = cor; s.append(i, nome); return s;
   }));
 });
@@ -674,7 +674,7 @@ dash.draw('calor', (el) => {
     .attr('aria-label', `Mapa de calor: ${IND[k].nome} por UF e ano`);
   const ext = d3.extent(ind, (r) => Number(r[k]));
   const op = d3.scaleLinear().domain(ext).range([0.08, 1]);
-  const cor = k === 'taxa' ? COR.azul : k === 'natalidade' ? '#5EE0C1' : '#7CC4FF';
+  const cor = k === 'taxa' ? COR.azul : k === 'natalidade' ? '#1BA39C' : '#F7941D';
   const destaque = OBX.param('ano');
   anos.forEach((a, j) => svg.append('text').attr('class', 'ob-lbl-m').attr('x', m.l + j * cw + cw / 2).attr('y', 14).attr('text-anchor', 'middle')
     .style('font-weight', a === destaque ? 700 : 400).style('fill', a === destaque ? COR.azul : null).text(cw < 40 ? String(a).slice(2) : a));
@@ -687,11 +687,11 @@ dash.draw('calor', (el) => {
       const v = val.get(`${u.uf}|${a}`);
       const o = v == null ? 0 : op(v);
       svg.append('rect').attr('x', m.l + j * cw + 1).attr('y', y + 1).attr('width', cw - 2).attr('height', ch - 2)
-        .attr('fill', v == null ? '#0A1828' : cor).attr('fill-opacity', v == null ? 1 : o)
+        .attr('fill', v == null ? '#EEF2F6' : cor).attr('fill-opacity', v == null ? 1 : o)
         .on('mousemove', (ev) => dica.mostrar(ev, [`${u.nome} (${u.uf}), ${a}`, `${IND[k].curto}: ${v == null ? 'sem dado' : IND[k].fmt(v)}`, `Região: ${u.regiao}`]))
         .on('mouseleave', () => dica.esconder());
       if (cw >= 46 && v != null) svg.append('text').attr('x', m.l + j * cw + cw / 2).attr('y', y + ch / 2 + 4).attr('text-anchor', 'middle')
-        .style('font-size', '10.5px').style('pointer-events', 'none').style('fill', o > 0.55 ? '#00284D' : COR.texto).text(k === 'taxa' || k === 'natalidade' ? FMT.n1(v) : FMT.n0(v));
+        .style('font-size', '10.5px').style('pointer-events', 'none').style('fill', o > 0.55 ? '#FFFFFF' : COR.texto).text(k === 'taxa' || k === 'natalidade' ? FMT.n1(v) : FMT.n0(v));
     });
   });
 });
@@ -727,7 +727,7 @@ dash.draw('reg-prior', (el) => {
       svg.append('rect').attr('x', x0).attr('y', y).attr('width', Math.max(1, x1 - x0 - 2)).attr('height', bh).attr('fill', COR_PRIOR[n])
         .on('mousemove', (ev) => dica.mostrar(ev, [`${l.reg}: prioridade ${n.toLowerCase()}`, `${l[n]} UF(s): ${l.ufs[n]}`])).on('mouseleave', () => dica.esconder());
       if (x1 - x0 > 40) svg.append('text').attr('x', (x0 + x1) / 2 - 1).attr('y', y + bh / 2 + 4).attr('text-anchor', 'middle').style('font-size', '11px').style('font-weight', 700)
-        .style('pointer-events', 'none').style('fill', n === 'Baixa' ? COR.texto : '#00284D').text(l.ufs[n]);
+        .style('pointer-events', 'none').style('fill', n === 'Alta' ? '#FFFFFF' : COR.texto).text(l.ufs[n]);
       acc += l[n];
     });
   });
@@ -742,9 +742,9 @@ dash.draw('leg-prior', (el) => {
 // Benchmarking: dados brutos x dados tratados
 // =====================================================================
 const CEN_BT = [
-  ['Dados brutos', '#5EE0C1'],
-  ['Dados tratados (sem histórico)', '#7CC4FF'],
-  ['Dados tratados (com taxa do ano anterior)', '#FFFFFF'],
+  ['Dados brutos', '#A9B6C3'],
+  ['Dados tratados (sem histórico)', '#9FD0F5'],
+  ['Dados tratados (com taxa do ano anterior)', '#F7941D'],
 ];
 dash.draw('leg-bt', (el) => {
   el.replaceChildren(...CEN_BT.map(([nome, cor]) => {
