@@ -273,7 +273,7 @@ dash.draw('corr', (el) => {
       const v = a === b ? 1 : (r ? r.r : null);
       const gx = lw + j * cel, gy = 34 + i * cel;
       svg.append('rect').attr('x', gx + 1).attr('y', gy + 1).attr('width', cel - 2).attr('height', cel - 2)
-        .attr('fill', v == null ? '#003B73' : (v >= 0 ? COR.azul : COR.teal)).attr('fill-opacity', v == null ? 1 : Math.max(0.06, Math.abs(v) * 0.9))
+        .attr('fill', v == null ? '#0A1828' : (v >= 0 ? COR.azul : COR.teal)).attr('fill-opacity', v == null ? 1 : Math.max(0.06, Math.abs(v) * 0.9))
         .on('mousemove', (ev) => dica.mostrar(ev, [`${curto[a]} x ${curto[b]}`, v == null ? 'sem dado' : `r = ${FMT.n3(v)}`, r ? `${r.n} pares UF e ano` : '']))
         .on('mouseleave', () => dica.esconder());
       const t = svg.append('text').attr('x', gx + cel / 2).attr('y', gy + cel / 2 + 4).attr('text-anchor', 'middle').style('pointer-events', 'none')
@@ -687,7 +687,7 @@ dash.draw('calor', (el) => {
       const v = val.get(`${u.uf}|${a}`);
       const o = v == null ? 0 : op(v);
       svg.append('rect').attr('x', m.l + j * cw + 1).attr('y', y + 1).attr('width', cw - 2).attr('height', ch - 2)
-        .attr('fill', v == null ? '#003B73' : cor).attr('fill-opacity', v == null ? 1 : o)
+        .attr('fill', v == null ? '#0A1828' : cor).attr('fill-opacity', v == null ? 1 : o)
         .on('mousemove', (ev) => dica.mostrar(ev, [`${u.nome} (${u.uf}), ${a}`, `${IND[k].curto}: ${v == null ? 'sem dado' : IND[k].fmt(v)}`, `Região: ${u.regiao}`]))
         .on('mouseleave', () => dica.esconder());
       if (cw >= 46 && v != null) svg.append('text').attr('x', m.l + j * cw + cw / 2).attr('y', y + ch / 2 + 4).attr('text-anchor', 'middle')
